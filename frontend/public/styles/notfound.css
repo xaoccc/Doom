@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap");
 
-:root {
+/* :root {
   --button: #b3b3b3;
   --button-color: #0a0a0a;
   --shadow: #000;
@@ -9,7 +9,7 @@
   --color: #fafafa;
   --lit-header: #e6e6e6;
   --speed: 2s;
-}
+} */
 
 * {
   box-sizing: border-box;
