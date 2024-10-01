@@ -154,3 +154,4 @@ AUTH_USER_MODEL = "profiles.AppUser"
 
 # CORS settings
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
