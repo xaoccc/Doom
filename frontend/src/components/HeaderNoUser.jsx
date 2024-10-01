@@ -1,6 +1,7 @@
 import '../../public/styles/normalize.min.css'
 import '../../public/styles/flexboxgrid.css'
 import '../../public/styles/theme.css'
+import { Link } from 'react-router-dom'
 
 export default function HeaderNoUser() {
   return (
@@ -9,8 +10,8 @@ export default function HeaderNoUser() {
         <img src="../../public/images/icon.png" className="logo" />
         <nav className="end-xs">
           <ul>
-            <li><a href="#about-us">Log In</a></li>
-            <li><a href="#services">Register</a></li>
+            <li><Link to="/login">Log In</Link></li>
+            <li><Link to="/register">Register</Link></li>
           </ul>
         </nav>
       </div>

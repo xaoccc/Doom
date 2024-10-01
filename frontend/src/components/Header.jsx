@@ -1,6 +1,7 @@
 import '../../public/styles/normalize.min.css'
 import '../../public/styles/flexboxgrid.css'
 import '../../public/styles/theme.css'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
 
@@ -19,7 +20,8 @@ export default function Header() {
             <li><a href="#about-us">About us</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><Link to="/contactus">Contact</Link></li>
+            <li><Link to="/logout">Log Out</Link></li>
           </ul>
         </nav>
       </div>
