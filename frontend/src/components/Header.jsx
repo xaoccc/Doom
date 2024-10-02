@@ -1,6 +1,3 @@
-import '../../public/styles/normalize.min.css'
-import '../../public/styles/flexboxgrid.css'
-import '../../public/styles/theme.css'
 import { Link } from 'react-router-dom'
 
 export default function Header() {
@@ -17,9 +14,9 @@ export default function Header() {
         <img src="../../public/images/icon.png" className="logo" />
         <nav className="end-xs">
           <ul>
-            <li><a href="#about-us">About us</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#events">Events</a></li>
+            <li><Link to="/">About us</Link></li>
+            <li><Link to="/services">Services</Link></li>
+            <li><Link to="/events">Events</Link></li>
             <li><Link to="/contactus">Contact</Link></li>
             <li><Link to="/logout">Log Out</Link></li>
           </ul>

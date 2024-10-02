@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Roboto:wght@100;300&display=swap");
 
-/* :root {
-  --button: #b3b3b3;
-  --button-color: #0a0a0a;
-  --shadow: #000;
-  --bg: #ddd;
-  --header: #7a7a7a;
-  --color: #fafafa;
-  --lit-header: #e6e6e6;
-  --speed: 2s;
-} */
 
 * {
   box-sizing: border-box;
@@ -28,18 +18,13 @@
   syntax: '<integer>';
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-}
 
 .not-found-wrapper {
   height: 100vh;
   width: 100vw;
   display: flex;
   font-family: 'Roboto', sans-serif;
-  color: var(--color);
+  color: #fafafa;
   perspective: 1200px;
   display: flex;
   flex-direction: column;
@@ -50,8 +35,8 @@ body {
 .not-found-wrapper a {
   text-transform: uppercase;
   text-decoration: none;
-  background: var(--button);
-  color: var(--button-color);
+  background: #ddd;
+  color: #0a0a0a;
   padding: 1rem 4rem;
   border-radius: 4rem;
   font-size: 0.875rem;
@@ -63,8 +48,8 @@ body {
 }
 
 .not-found-wrapper h1 {
-  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
-  animation: swing var(--speed) infinite alternate ease-in-out;
+  -webkit-animation: swing 2s infinite alternate ease-in-out;
+  animation: swing 2s infinite alternate ease-in-out;
   font-size: clamp(5rem, 40vmin, 20rem);
   font-family: 'Open Sans', sans-serif;
   margin: 0;
@@ -72,7 +57,7 @@ body {
   letter-spacing: 1rem;
   transform: translate3d(0, 0, 0vmin);
   --x: calc(50% + (var(--swing-x) * 0.5) * 1%);
-  background: radial-gradient(var(--lit-header), var(--header) 45%) var(--x) 100%/200% 200%;
+  background: radial-gradient(#e6e6e6, #7a7a7a 45%) var(--x) 100%/200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -80,8 +65,8 @@ body {
 }
 
 .not-found-wrapper h1:after {
-  -webkit-animation: swing var(--speed) infinite alternate ease-in-out;
-  animation: swing var(--speed) infinite alternate ease-in-out;
+  -webkit-animation: swing 2s infinite alternate ease-in-out;
+  animation: swing 2s infinite alternate ease-in-out;
   content: "404";
   position: absolute;
   top: 0;
@@ -92,7 +77,7 @@ body {
 }
 
 .cloak {
-  animation: swing var(--speed) infinite alternate-reverse ease-in-out;
+  animation: swing 2s infinite alternate-reverse ease-in-out;
   height: 100%;
   width: 100%;
   transform-origin: 50% 30%;

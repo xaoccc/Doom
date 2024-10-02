@@ -1,6 +1,3 @@
-import '../../public/styles/normalize.min.css'
-import '../../public/styles/flexboxgrid.css'
-import '../../public/styles/theme.css'
 import { Link } from 'react-router-dom'
 
 export default function HeaderNoUser() {

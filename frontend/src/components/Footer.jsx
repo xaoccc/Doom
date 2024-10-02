@@ -1,34 +1,29 @@
+
+import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
-    <>
-      <footer>
-        <div className="container">
-          <div className="row">
-            <div className="col-md center-xs">
-              <img src="./images/logo.png" className="margin-bottom"  />
-            </div>
-          </div>
-          <div className="row margin-bottom-small">
-            <div className="col-md-8">
-              <h3>About us</h3>
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-            <div className="col-md-4">
-              <h3>Links</h3>
-              <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about-us">About us</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#why-us">Why us</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-          
-        </div>
-      </footer>
 
+    <footer>
+      <div className="container">
+
+        <div className="row margin-bottom-small">
+          <div className="col-md-6">
+            <h3>About us</h3>
+            <p>We offer any kind of entertainment allowed by the human laws</p>
+          </div>
+          <div className="col-md-6">
+            <h3>Links</h3>
+            <ul>
+              <li><Link to="/">About us</Link></li>
+              <li><Link to="/services">Services</Link></li>
+              <li><Link to="/events">Events</Link></li>
+              <li><Link to="/contactus">Contact</Link></li>
+              <li><Link to="/logout">Log Out</Link></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
       <div className="row secondary-footer">
         <div className="col-md">
           <p>Club Doom © 2024</p>
@@ -37,6 +32,9 @@ export default function Footer() {
           <p><a href="#">Imprint</a> | <a href="#">Data Protection</a></p>
         </div>
       </div>
-    </>
+    </footer>
+
+
+
   )
 }

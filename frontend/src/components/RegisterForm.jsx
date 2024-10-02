@@ -10,7 +10,7 @@ export default function RegisterForm({ route, method }) {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const name = (method === 'login') ? 'Login' : 'Register';
+    const name = (method === 'login') ? 'Enter the realms of Club Doom' : 'Register';
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -37,7 +37,6 @@ export default function RegisterForm({ route, method }) {
 
     return (
         <form onSubmit={handleSubmit} className="form-container">
-            <h1>{name}</h1>
             <input
                 type="text"
                 className="form-input"
