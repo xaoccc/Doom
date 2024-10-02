@@ -5,8 +5,6 @@ export default function Header() {
   function getUser() {
     return localStorage.getItem('login');
   }
-  console.log(getUser());
-
 
   return (
     <header className="fade-in">
@@ -24,7 +22,7 @@ export default function Header() {
       </div>
       <div className="hero flex middle-xs">
         <div className="hero-text ">
-        <h1>Welcome to Club Doom, visitor!</h1>
+        <h1>Welcome to Club Doom, {`${localStorage.getItem('email').split('@')[0]}`}!</h1>
         <p>A place to meet all your sins</p>
         </div>
       </div>

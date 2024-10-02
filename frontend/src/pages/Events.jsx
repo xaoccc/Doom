@@ -1,7 +1,7 @@
 export default function Events() {
-  return (
-    <main>
-      <section className="blurbs" id="benefits">
+    return (
+        <main>
+            <section className="blurbs" id="benefits">
                 <div className="container">
                     <div className="row">
                         <div className="col-md center-xs">
@@ -52,6 +52,14 @@ export default function Events() {
                     </div>
                 </div>
             </section>
-    </main>
-  )
+            {
+                localStorage.getItem('admin') === 'true' && (
+                    <div className="adminPanel">
+                        <button className="addEvent">Add Event</button>
+                    </div>
+                )
+            }
+
+        </main>
+    )
 }

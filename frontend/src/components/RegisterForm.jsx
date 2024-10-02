@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants";
+import { ACCESS_TOKEN, REFRESH_TOKEN, ADMIN} from "../constants";
 import LoadingIndicator from "./LoadingIndicator";
 
 
@@ -21,6 +21,7 @@ export default function RegisterForm({ route, method }) {
             if (method === 'login') {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                localStorage.setItem(ADMIN, res.data.is_staff);
                 localStorage.setItem('email', email);
                 localStorage.setItem('login', true);
                 navigate('/');
