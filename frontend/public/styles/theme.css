@@ -24,6 +24,9 @@ body {
 
 #root {
 	min-height: 100vh;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Typography
@@ -362,8 +365,8 @@ footer {
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
+	/* position: absolute;
+	bottom: 0; */
 	padding: 0;
     width: 100%;
 }
