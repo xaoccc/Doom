@@ -8,6 +8,7 @@ import LoadingIndicator from "./LoadingIndicator";
 export default function RegisterForm({ route, method }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [age, setAge] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const name = (method === 'login') ? 'Enter the realms of Club Doom' : 'Register';
@@ -16,7 +17,7 @@ export default function RegisterForm({ route, method }) {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await api.post(route, { email, password });
+            const res = await api.post(route, { email, password, age });
 
             if (method === 'login') {
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
@@ -44,6 +45,7 @@ export default function RegisterForm({ route, method }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="E-mail"
+                required
             />
             <input
                 type="password"
@@ -51,7 +53,19 @@ export default function RegisterForm({ route, method }) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
+                required
             />
+            { method === 'register' && 
+                <input
+                    type="number"
+                    className="form-input"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    placeholder="Age"
+                    required
+                />
+            }
+            
             { loading && <LoadingIndicator loading={loading} /> }
             <button type="submit" className="form-button"> {name} </button>
         </form>
