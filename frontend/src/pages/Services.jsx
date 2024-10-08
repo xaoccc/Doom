@@ -40,12 +40,12 @@ export default function Services() {
                     </div>
                 </div>
                 <div className="services-container">
-                    { services.map((service) => <Service service={service} onDelete={deleteService} />) }
+                    { services.map((service, index) => <Service key={index} service={service} onDelete={deleteService}  />) }
                 </div>
                 {
                     localStorage.getItem('admin') === 'true' && (
                         <div className="adminPanel">
-                            <button className="addEvent">Add Service</button>
+                            <Link className="addEvent button" to="/services/create">Add Service</Link>
                         </div>
                     )
                 }

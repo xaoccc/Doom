@@ -4,6 +4,7 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import ContactUs from './pages/ContactUs'
 import Services from './pages/Services'
+import CreateService from './pages/CreateService'
 import Events from './pages/Events'
 import Header from './components/Header'
 import HeaderNoUser from './components/HeaderNoUser'
@@ -37,6 +38,7 @@ function App() {
           <Route path="/logout" element={<><HeaderNoUser /><Logout /></>} />
           <Route path="/contactus" element={<ProtectedRoute><Header /><ContactUs /></ProtectedRoute>} />
           <Route path="/services" element={<ProtectedRoute><Header /><Services /></ProtectedRoute>} />
+          <Route path="/services/create" element={<ProtectedRoute><Header /><CreateService /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Header /><Events /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
 

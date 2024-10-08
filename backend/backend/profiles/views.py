@@ -50,7 +50,7 @@ class RegisterView(APIView):
       
     def post(self, request):        
         serializer = UserSerializer(data=request.data)       
-        if serializer.is_valid():    
+        if serializer.is_valid():   
              
             serializer.save()
             send_register_email(AppUser.objects.last().email)

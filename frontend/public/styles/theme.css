@@ -67,7 +67,11 @@ section {
 	margin: 10rem auto;
 }
 
-button {
+.adminPanel {
+	margin-top: 1.5rem;
+}
+
+button, .button {
 	background-color: #000;
 	border: none;
 	border-radius: 3px;
@@ -85,7 +89,7 @@ button {
 }
 
 
-button:hover, button:focus {
+button:hover, button:focus, .button:hover, .button:focus {
 	background-color: #fff;
 	color: #000;
 }
@@ -311,7 +315,7 @@ hr {
 .form-container {
 	display: flex;
 	flex-direction: column;
-	max-width: 30%;
+	width: 40%;
 	gap: 1rem;
 	margin: 6rem auto;
 	align-items: center;
