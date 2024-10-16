@@ -1,34 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../api';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 export default function EditService() {
 
+    // First we define our state variables and the setter functions so we can get our data
+    const navigate = useNavigate();
+    const { serviceId } = useParams();
+    const [services, setServices] = useState([]);
     const [imageUrl, setImageUrl] = useState("");
     const [description, setDescription] = useState("");
     const [title, setTitle] = useState("");
-    const navigate = useNavigate();
-    const { serviceId } = useParams();
 
-    
-  
-    const editService = async (e) => {
-      e.preventDefault();
-      api.post("/api/services/create/", { imageUrl, title, description })
-        .then((res) => {
-          if (res.status === 201) {
-            console.log("Service updated successfully!");
-            navigate('/services/');
-  
-          } else {
-            console.log("Service was not updated!");
-          }
-  
-        })
-        .catch((error) => console.error(`Error: ${error}`));
-  
+    useEffect(() => {
+        getServices();
+    }, []);
+
+    // We need to get the services so we can find the current service and populate the form with the current data
+    useEffect(() => {
+        const serviceToUpdate = services.find(service => service.pk == serviceId);
+
+        if (serviceToUpdate) {
+            setImageUrl(serviceToUpdate.imageUrl);
+            setDescription(serviceToUpdate.description);
+            setTitle(serviceToUpdate.title);
+        }
+    }, [services, serviceId]);
+
+    const getServices = async () => {
+        api.get("/api/services/")
+            .then((response) => {
+                setServices(response.data);
+            })
+            .catch((error) => console.error(`Error: ${error}`));;
     }
+
+    // Make a PUT request to the API to update the service
+    const editService = async (e) => {
+        e.preventDefault();
+        const requestData = { imageUrl, title, description };
+        console.log("Request Data:", requestData);
+        api.put(`/api/services/${serviceId}/`, requestData)
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log("Service updated successfully!");
+                    navigate('/services/');
+                } else {
+                    console.log("Service was not updated!");
+                }
+            })
+            .catch((error) => console.error(`Error: ${error}`));
+    }
+
     return (
 
         <>
@@ -63,7 +87,7 @@ export default function EditService() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Update service" />
             </form>
         </>
 
