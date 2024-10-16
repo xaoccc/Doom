@@ -12,8 +12,6 @@
     - Setup the front-end:
         - Install Node.JS 20.11
         - Setup React, Vite and the necessary packages:
-        `npm create vite@latest frontend -- --template react`  
-        `cd frontend`  
         `npm install`  
         `npm install axios react-router-dom jwt-decode` 
     
@@ -27,3 +25,5 @@
 
 2. Features:
     - Log In, Register, Log Out
+    - Only superusers can create site admins
+    - Site admins can add, edit and delete services and events
