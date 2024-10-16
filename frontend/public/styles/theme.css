@@ -344,7 +344,6 @@ input:focus, textarea:focus, input:focus-visible, textarea:focus-visible, input:
 	transition-property: background;
 	transition-duration: 0.5s;
 	transition-timing-function: ease;
-
 }
 
 [type="button"]:hover, [type="reset"]:hover, [type="submit"]:hover {
