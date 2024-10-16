@@ -18,18 +18,6 @@ export default function Services() {
         .catch((error) => console.error(`Error: ${error}`));;
     }
 
-    const deleteService = async (id) => {
-        api.delete(`/api/notes/${id}/`)
-          .then((res) => {
-            if (res.status === 204) {
-              console.log("Note deleted successfully!");
-              getServices();
-            } else {
-              console.log("Note was not deleted!");
-            }
-          })
-          .catch((error) => console.error(`Error: ${error}`));    
-      }
 
     return (
         <section className="services" id="services">
@@ -40,7 +28,7 @@ export default function Services() {
                     </div>
                 </div>
                 <div className="services-container">
-                    { services.map((service, index) => <Service key={index} service={service} onDelete={deleteService}  />) }
+                    { services.map((service, index) => <Service key={index} service={service} />) }
                 </div>
                 {
                     localStorage.getItem('admin') === 'true' && (

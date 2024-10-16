@@ -5,4 +5,4 @@ from rest_framework import serializers
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
-        fields = ['imageUrl', 'title', 'description']
+        fields = ['pk', 'imageUrl', 'title', 'description']
