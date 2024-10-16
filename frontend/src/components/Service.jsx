@@ -1,10 +1,11 @@
 import api from '../api';
+import { useNavigate } from "react-router-dom";
 
 export default function Service({ service }) {
 
-    const onDelete = async (id) => {
-        console.log(id);
+    const navigate = useNavigate();
 
+    const onDelete = async (id) => {
         api.delete(`/api/services/${id}/`)
           .then((res) => {
             if (res.status === 204) {
@@ -27,7 +28,7 @@ export default function Service({ service }) {
                 localStorage.getItem('admin') === 'true' && (
                     <>
                         <button className="delete-button" onClick={() => onDelete(service.pk)}>Delete</button>
-                        <button className="edit-button" onClick={() => nav(`/edit-service/${service.id}`, { state: { service } })} >Edit</button>
+                        <button className="edit-button" onClick={() => navigate(`/services/edit/${service.pk}`)} >Edit</button>
                     </>
                 )
             }

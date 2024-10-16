@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import ContactUs from './pages/ContactUs'
 import Services from './pages/Services'
 import CreateService from './pages/CreateService'
+import EditService from './pages/EditService'
 import Events from './pages/Events'
 import Header from './components/Header'
 import HeaderNoUser from './components/HeaderNoUser'
@@ -39,6 +40,7 @@ function App() {
           <Route path="/contactus" element={<ProtectedRoute><Header /><ContactUs /></ProtectedRoute>} />
           <Route path="/services" element={<ProtectedRoute><Header /><Services /></ProtectedRoute>} />
           <Route path="/services/create" element={<ProtectedRoute><Header /><CreateService /></ProtectedRoute>} />
+          <Route path="/services/edit/:serviceId" element={<ProtectedRoute><Header /><EditService /></ProtectedRoute>} />
           <Route path="/events" element={<ProtectedRoute><Header /><Events /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
 
