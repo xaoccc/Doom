@@ -15,7 +15,7 @@ export default function CreateService() {
         .then((res) => {
           if (res.status === 201) {
             console.log("Service added successfully!");
-            navigate('/');
+            navigate('/services/');
   
           } else {
             console.log("Service was not created!");

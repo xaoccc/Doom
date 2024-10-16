@@ -1,4 +1,23 @@
-export default function Service({ service, onDelete }) {
+import api from '../api';
+
+export default function Service({ service }) {
+
+    const onDelete = async (id) => {
+        console.log(id);
+
+        api.delete(`/api/services/${id}/`)
+          .then((res) => {
+            if (res.status === 204) {
+              console.log("Service deleted successfully!");
+            //   This app should have been SPA, but in some cases it's easier to reload pages
+              location.reload();
+            } else {
+              console.log("Service was not deleted!");
+            }
+          })
+          .catch((error) => console.error(`Error: ${error}`));    
+      }
+
     return (
         <div className="service">
             <img src={service.imageUrl} className="icon icon service-img" /><br />
@@ -7,7 +26,7 @@ export default function Service({ service, onDelete }) {
             {
                 localStorage.getItem('admin') === 'true' && (
                     <>
-                        <button className="delete-button" onClick={() => onDelete(service.id)}>Delete</button>
+                        <button className="delete-button" onClick={() => onDelete(service.pk)}>Delete</button>
                         <button className="edit-button" onClick={() => nav(`/edit-service/${service.id}`, { state: { service } })} >Edit</button>
                     </>
                 )
