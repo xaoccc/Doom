@@ -11,7 +11,10 @@ import Header from './components/Header'
 import HeaderNoUser from './components/HeaderNoUser'
 import Footer from './components/Footer'
 import ProtectedRoute from './components/ProtectedRoute'
+import AdminProtectedRoute from './components/AdminProtectedRoute'
 import NotFound from './pages/NotFound'
+import NotAuthorized from './pages/NotAuthorized'
+
 import '../public/styles/normalize.min.css'
 import '../public/styles/flexboxgrid.css'
 import '../public/styles/theme.css'
@@ -39,10 +42,13 @@ function App() {
           <Route path="/logout" element={<><HeaderNoUser /><Logout /></>} />
           <Route path="/contactus" element={<ProtectedRoute><Header /><ContactUs /></ProtectedRoute>} />
           <Route path="/services" element={<ProtectedRoute><Header /><Services /></ProtectedRoute>} />
-          <Route path="/services/create" element={<ProtectedRoute><Header /><CreateService /></ProtectedRoute>} />
-          <Route path="/services/edit/:serviceId" element={<ProtectedRoute><Header /><EditService /></ProtectedRoute>} />
+
+          <Route path="/services/create" element={<AdminProtectedRoute><Header /><CreateService /></AdminProtectedRoute>} />
+          <Route path="/services/edit/:serviceId" element={<AdminProtectedRoute><Header /><EditService /></AdminProtectedRoute>} />
+
           <Route path="/events" element={<ProtectedRoute><Header /><Events /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/forbidden" element={<NotAuthorized />} />
 
         </Routes>
         <Footer />     
