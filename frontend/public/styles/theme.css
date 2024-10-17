@@ -218,16 +218,16 @@ hr {
 
 /* Serivces */
 
-.services .icon-row {
+.services .icon-row, .events .icon-row {
 	padding: 30px 0;
 }
 
-.service {
+.service, .event {
 	width: 30%;
 	height: 100%;
 }
 
-.services-container {
+.services-container, .events-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -355,7 +355,12 @@ input:focus, textarea:focus, input:focus-visible, textarea:focus-visible, input:
 
 }
 
-button, .button {
+a.button {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+button, .button, .service > a.button {
 	background-color: #000;
 	border: 1px solid rgb(128, 20, 20);
 	border-radius: 5px;
@@ -377,7 +382,7 @@ button, .button {
 	margin-right: 0.5rem;
 }
 
-button:hover, button:focus, .button:hover, .button:focus {
+button:hover, button:focus, .button:hover, .button:focus, .service > a.button:hover {
 	background-color: #250404;
 	border: 1px solid #250404;
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
