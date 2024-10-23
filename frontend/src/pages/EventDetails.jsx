@@ -29,29 +29,15 @@ export default function EventDetails() {
     }
 
     return (
-
         <div className="container">
-            <div className="row">
-                <div className="col-md-12 center-xs">
-                    <h1>{currentEvent.title} in {currentEvent.location}!</h1>
-                    <h3>{currentEvent.date} @ {currentEvent.formatted_time}</h3>
-                </div>
+            <div className="event-details flex margin-top">
+                <h1>{currentEvent.title} in {currentEvent.location}!</h1>
+                <h3>{currentEvent.date} @ {currentEvent.formatted_time}</h3>
+                <img src={currentEvent.imageUrl} className="icon event-details-img" /><br />
+                <h3>Price: {currentEvent.price} EUR</h3>
+                <p>{currentEvent.description}</p>
+                <button className="purchase-btn margin-bottom" onClick={() => onPurchase(currentEvent)}>Buy Ticket</button>
             </div>
-            <div className="row center-xs">                
-                <img src={currentEvent.imageUrl} className="icon event-details-img" /><br />              
-            </div>
-            <div className="row center-xs">                
-                <p>{currentEvent.description}</p>                  
-            </div>
-            <div className="row center-xs">                        
-                <h3>Price: {currentEvent.price} EUR</h3>          
-            </div>
-            <div className="row center-xs">                
-                <button className="purchase-btn" onClick={() => onPurchase(currentEvent)}>Buy Ticket</button>           
-            </div>
-
-
-
         </div>
     )
 }
