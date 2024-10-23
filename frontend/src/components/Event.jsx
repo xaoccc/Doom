@@ -28,8 +28,8 @@ export default function Event({ event }) {
             {
                 localStorage.getItem('admin') === 'true' && (
                     <>
-                        <button className="delete-button" onClick={() => onDelete(event.pk)}>Delete</button>
-                        <button className="edit-button" onClick={() => navigate(`/events/edit/${event.pk}`)} >Edit</button>
+                        <button className="delete-button" onClick={() => onDelete(event.id)}>Delete</button>
+                        <button className="edit-button" onClick={() => navigate(`/events/edit/${event.id}`)} >Edit</button>
                     </>
                 )
             }

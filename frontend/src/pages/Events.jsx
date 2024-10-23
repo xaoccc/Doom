@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import Event from '../components/Event';
 import api from '../api';
@@ -33,7 +34,7 @@ export default function Events() {
                     {
                         localStorage.getItem('admin') === 'true' && (
                             <div className="adminPanel">
-                                <button className="addEvent">Add Event</button>
+                                <Link className="addEvent button" to="/events/create">Add Event</Link>
                             </div>
                         )
                     }
