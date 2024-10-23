@@ -1,5 +1,6 @@
 import api from '../api';
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function Event({ event }) {
 
@@ -23,7 +24,7 @@ export default function Event({ event }) {
         <div className="service">
             <img src={event.imageUrl} className="icon icon service-img" /><br />
             <h3>{event.title}</h3>
-            <a className='button' href='#'>More</a>
+            <Link className='button' to={`/events/${event.id}`}>More</Link>
             {
                 localStorage.getItem('admin') === 'true' && (
                     <>

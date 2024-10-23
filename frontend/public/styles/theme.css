@@ -260,9 +260,20 @@ hr {
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
 }
 
+.icon.event-details-img {
+	width: 40%;
+	height: 16rem;
+	border-radius: 10px;
+	margin-top: 1rem;
+	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
+}
+
 .icon.event-img:hover, .icon.service-img:hover {
 	filter: saturate(2) drop-shadow(0px 0px 9px red);
-	cursor: pointer;
+}
+
+.icon.event-details-img:hover {
+	filter: saturate(2) drop-shadow(0px 0px 9px red);
 }
 
 
@@ -380,6 +391,10 @@ button, .button, .service > a.button {
 
 .delete-button {
 	margin-right: 0.5rem;
+}
+
+.purchase-btn {
+	margin-top: 1rem;
 }
 
 button:hover, button:focus, .button:hover, .button:focus, .service > a.button:hover {

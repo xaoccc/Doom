@@ -33,7 +33,7 @@ export default function EditService() {
             .then((response) => {
                 setServices(response.data);
             })
-            .catch((error) => console.error(`Error: ${error}`));;
+            .catch((error) => console.error(`Error: ${error}`));
     }
 
     // Make a PUT request to the API to update the service

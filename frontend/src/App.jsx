@@ -7,6 +7,8 @@ import Services from './pages/Services'
 import CreateService from './pages/CreateService'
 import EditService from './pages/EditService'
 import Events from './pages/Events'
+import EventDetails from './pages/EventDetails'
+
 import Header from './components/Header'
 import HeaderNoUser from './components/HeaderNoUser'
 import Footer from './components/Footer'
@@ -42,6 +44,7 @@ function App() {
           <Route path="/logout" element={<><HeaderNoUser /><Logout /></>} />
           <Route path="/contactus" element={<ProtectedRoute><Header /><ContactUs /></ProtectedRoute>} />
           <Route path="/services" element={<ProtectedRoute><Header /><Services /></ProtectedRoute>} />
+          <Route path="/events/:eventId" element={<ProtectedRoute><Header /><EventDetails /></ProtectedRoute>} />
 
           <Route path="/services/create" element={<AdminProtectedRoute><Header /><CreateService /></AdminProtectedRoute>} />
           <Route path="/services/edit/:serviceId" element={<AdminProtectedRoute><Header /><EditService /></AdminProtectedRoute>} />
