@@ -5,6 +5,7 @@ import api from '../api';
 export default function EventDetails() {
     const eventId = useParams().eventId;
     let [events, setEvents] = useState([]);
+    let [time, setTime] = useState("");
     let [currentEvent, setCurrentEvent] = useState({});
 
     useEffect(() => {
@@ -15,6 +16,7 @@ export default function EventDetails() {
         const eventToUpdate = events.find(event => event.id == eventId);
         if (eventToUpdate) {
             setCurrentEvent(eventToUpdate);
+            setTime(eventToUpdate.time.slice(0, 5));
         }
     }, [events, eventId]);
 
@@ -32,7 +34,7 @@ export default function EventDetails() {
         <div className="container">
             <div className="event-details flex margin-top">
                 <h1>{currentEvent.title} in {currentEvent.location}!</h1>
-                <h3>{currentEvent.date} @ {currentEvent.formatted_time}</h3>
+                <h3>{currentEvent.date} @ {time}</h3>
                 <img src={currentEvent.imageUrl} className="icon event-details-img" /><br />
                 <h3>Price: {currentEvent.price} EUR</h3>
                 <p>{currentEvent.description}</p>
