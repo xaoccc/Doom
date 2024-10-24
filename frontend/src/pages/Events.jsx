@@ -1,4 +1,24 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import Event from '../components/Event';
+import api from '../api';
+
 export default function Events() {
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        getEvents();
+    }, []);
+
+    const getEvents = async () => {
+        api.get("/api/events/")
+            .then((response) => {
+                setEvents(response.data);
+            })
+            .catch((error) => console.error(`Error: ${error}`));;
+    }
+
     return (
         <main>
             <section className="blurbs" id="benefits">
@@ -8,23 +28,16 @@ export default function Events() {
                             <h2 className="section-title">Events</h2>
                         </div>
                     </div>
-                    <div className="row margin-bottom-small center-xs">
-                        <div className="col-md">
-                            <img src="../../public/images/event-1.jpg" className="icon event-img" />
-                            <h3>Deicide</h3>
-                            <p>Support bands: Jungle Rot, Maltworm. Price: 70BGN</p>
-                        </div>
-                        <div className="col-md">
-                            <img src="../../public/images/event-2.jpg" className="icon event-img" />
-                            <h3>$uicideboy$</h3>
-                            <p>Support bands: 100 Kila. Price: 80BGN</p>
-                        </div>
-                        <div className="col-md">
-                            <img src="../../public/images/event-3.jpg" className="icon event-img" />
-                            <h3>Mayhem</h3>
-                            <p>Support bands: Bolg. Price: 100BGN</p>
-                        </div>
+                    <div className="row margin-bottom-small center-xs events-container">
+                        {events.map((event, index) => <Event key={index} event={event} />)}
                     </div>
+                    {
+                        localStorage.getItem('admin') === 'true' && (
+                            <div className="adminPanel">
+                                <Link className="addEvent button" to="/events/create">Add Event</Link>
+                            </div>
+                        )
+                    }
                 </div>
             </section>
             <section className="newsletter">
@@ -40,13 +53,7 @@ export default function Events() {
                     </div>
                 </div>
             </section>
-            {
-                localStorage.getItem('admin') === 'true' && (
-                    <div className="adminPanel">
-                        <button className="addEvent">Add Event</button>
-                    </div>
-                )
-            }
+
 
         </main>
     )

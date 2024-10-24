@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend.profiles',
     'backend.services',
+    'backend.events',
     'rest_framework',
     'corsheaders',
 ]
