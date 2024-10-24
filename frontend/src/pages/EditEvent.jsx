@@ -1,8 +1,16 @@
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import api from '../api';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-export default function CreateEvent() {
+export default function EditEvent() {
+
+    // First we define our state variables and the setter functions so we can get our data
+    const navigate = useNavigate();
+    const { eventId } = useParams();
+    const [events, setEvents] = useState([]);
+
+    // Fields to update
     const [imageUrl, setImageUrl] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
@@ -10,29 +18,54 @@ export default function CreateEvent() {
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
     const [price, setPrice] = useState("");
-    const navigate = useNavigate();
-  
-    const createEvent = async (e) => {
-      e.preventDefault();
-      api.post("/api/events/create/", { imageUrl, title, description, date, time, price, location })
-        .then((res) => {
-          if (res.status === 201) {
-            console.log("Event added successfully!");
-            navigate('/events/');
-  
-          } else {
-            console.log("Event was not created!");
-          }
-  
-        })
-        .catch((error) => console.error(`Error: ${error}`));
-  
+
+    useEffect(() => {
+        getEvents();
+    }, []);
+
+    // We need to get the events so we can find the current event and populate the form with the current data
+    useEffect(() => {
+        const eventToUpdate = events.find(event => event.id == eventId);
+
+        if (eventToUpdate) {
+            setImageUrl(eventToUpdate.imageUrl);
+            setDescription(eventToUpdate.description);
+            setLocation(eventToUpdate.location);
+            setTitle(eventToUpdate.title);
+            setDate(eventToUpdate.date);
+            setTime(eventToUpdate.time);
+            setPrice(eventToUpdate.price);
+        }
+    }, [events, eventId]);
+
+    const getEvents = async () => {
+        api.get("/api/events/")
+            .then((response) => {
+                setEvents(response.data);
+            })
+            .catch((error) => console.error(`Error: ${error}`));
     }
 
+    // Make a PUT request to the API to update the event
+    const editEvent = async (e) => {
+        e.preventDefault();
+        const requestData = { imageUrl, description, location, title, date, time, price };
+        console.log("Request Data:", requestData);
+        api.put(`/api/events/${eventId}/`, requestData)
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log("Event updated successfully!");
+                    navigate('/events/');
+                } else {
+                    console.log("Event was not updated!");
+                }
+            })
+            .catch((error) => console.error(`Error: ${error}`));
+    }
     return (
         <div>
-            <h2 className="create-note-heading">Create Event</h2>
-            <form className="form-container" onSubmit={createEvent}>
+            <h2 className="create-note-heading">Edit Event</h2>
+            <form className="form-container" onSubmit={editEvent}>
                 <label htmlFor="imageUrl">Image URL:</label>
                 <input
                     className="form-input"

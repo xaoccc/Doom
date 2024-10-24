@@ -7,6 +7,7 @@ import Services from './pages/Services'
 import CreateService from './pages/CreateService'
 import CreateEvent from './pages/CreateEvent'
 import EditService from './pages/EditService'
+import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
 import EventDetails from './pages/EventDetails'
 
@@ -39,19 +40,26 @@ function App() {
     <BrowserRouter>
       <Routes>
           {/* Wrap ProtectedRoute around each component meant for only logged in users */}
-          <Route path="/" element={<ProtectedRoute> <Header />  <Home /> </ProtectedRoute>} />
+          
+          {/* Routes for users who are not logged in */}
           <Route path="/login" element={<><HeaderNoUser /> <Login /></>} />
           <Route path="/register" element={<><HeaderNoUser /> <RegisterAndLogout /></>} />
           <Route path="/logout" element={<><HeaderNoUser /><Logout /></>} />
+
+          {/* Routes for users who are logged in */}
+          <Route path="/" element={<ProtectedRoute> <Header />  <Home /> </ProtectedRoute>} />
           <Route path="/contactus" element={<ProtectedRoute><Header /><ContactUs /></ProtectedRoute>} />
           <Route path="/services" element={<ProtectedRoute><Header /><Services /></ProtectedRoute>} />
+          <Route path="/events" element={<ProtectedRoute><Header /><Events /></ProtectedRoute>} />
           <Route path="/events/:eventId" element={<ProtectedRoute><Header /><EventDetails /></ProtectedRoute>} />
 
+          {/* Routes for users who are logged in as admin */}
           <Route path="/events/create" element={<AdminProtectedRoute><Header /><CreateEvent /></AdminProtectedRoute>} />
           <Route path="/services/create" element={<AdminProtectedRoute><Header /><CreateService /></AdminProtectedRoute>} />
           <Route path="/services/edit/:serviceId" element={<AdminProtectedRoute><Header /><EditService /></AdminProtectedRoute>} />
+          <Route path="/events/edit/:eventId" element={<AdminProtectedRoute><Header /><EditEvent /></AdminProtectedRoute>} />
 
-          <Route path="/events" element={<ProtectedRoute><Header /><Events /></ProtectedRoute>} />
+          {/* Routes for 404 and 403 pages */}
           <Route path="*" element={<NotFound />} />
           <Route path="/forbidden" element={<NotAuthorized />} />
 
