@@ -13,7 +13,7 @@ export default function CreateEvent() {
     const navigate = useNavigate();
   
     const createEvent = async (e) => {
-      e.preventDefault();
+      e.preventDefault();    
       api.post("/api/events/create/", { imageUrl, title, description, date, time, price, location })
         .then((res) => {
           if (res.status === 201) {
@@ -43,6 +43,7 @@ export default function CreateEvent() {
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                 />
+                {/^https?:\/\/\S+$/.test(imageUrl) ? '' : <small className="error">Enter a valid web address. It should start with http:// or https://</small>}
                 <label htmlFor="title">Title:</label>
                 <input
                     className="form-input"
@@ -53,6 +54,7 @@ export default function CreateEvent() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="description">Description:</label>
                 <textarea
                     className="form-input"
@@ -62,8 +64,10 @@ export default function CreateEvent() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
+                {(description) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="date">Date:</label>
-                <textarea
+                <input
+                    type="date"
                     className="form-input"
                     id="date"
                     name="date"
@@ -71,8 +75,10 @@ export default function CreateEvent() {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                 />
+                {(date) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="time">Time:</label>
-                <textarea
+                <input
+                    type="time"
                     className="form-input"
                     id="time"
                     name="time"
@@ -80,8 +86,10 @@ export default function CreateEvent() {
                     onChange={(e) => setTime(e.target.value)}
                     value={time}
                 />
+                {(time) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="price">Price:</label>
-                <textarea
+                <input
+                    type="number"
                     className="form-input"
                     id="price"
                     name="price"
@@ -89,8 +97,10 @@ export default function CreateEvent() {
                     onChange={(e) => setPrice(e.target.value)}
                     value={price}
                 />
+                {/^\d+$/.test(price) ? '' : <small className="error">Enter a valid price.</small>}
                 <label htmlFor="location">Location:</label>
-                <textarea
+                <input
+                    type="text"
                     className="form-input"
                     id="location"
                     name="location"
@@ -98,6 +108,7 @@ export default function CreateEvent() {
                     onChange={(e) => setLocation(e.target.value)}
                     value={location}
                 />
+                {(location) ? null : <small className="error">This field is required</small>}
                 <input type="submit" value="Submit" />
             </form>
         </div>

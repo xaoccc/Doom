@@ -47,6 +47,10 @@ p {
 	margin-top: 0; 
 }
 
+label {
+	color: #bbb;
+}
+
 
 
 
@@ -399,6 +403,11 @@ button:hover, button:focus, .button:hover, .button:focus, .service > a.button:ho
     flex-direction: row;
     justify-content: center;
     gap: 1rem;
+}
+
+small.error {
+	margin-top: -1rem;
+	color: red;
 }
 
 

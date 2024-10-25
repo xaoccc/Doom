@@ -10,8 +10,6 @@ export default function Events() {
     const ITEMS_PER_PAGE = 6;
     const [searchParams] = useSearchParams();
 
-    console.log(searchParams);
-
     useEffect(() => {
         getEvents();
     }, []);
@@ -25,11 +23,10 @@ export default function Events() {
     }
 
     useEffect(() => {
-        const page = parseInt(searchParams.get('page')) || 1; // Default to page 1 if not set
+        const page = parseInt(searchParams.get('page')) || 1;
         const startIndex = (page - 1) * ITEMS_PER_PAGE;
         const endIndex = startIndex + ITEMS_PER_PAGE;
-    
-        // Set the subset of events for the current page
+
         setDisplayedEvents(events.slice(startIndex, endIndex));
       }, [events, searchParams]);
 
