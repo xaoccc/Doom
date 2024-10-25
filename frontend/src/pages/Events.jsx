@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import Event from '../components/Event';
 import api from '../api';
 
 export default function Events() {
     const [events, setEvents] = useState([]);
+    const [displayedEvents, setDisplayedEvents] = useState([]);
+    const ITEMS_PER_PAGE = 6;
+    const [searchParams] = useSearchParams();
+
+    console.log(searchParams);
 
     useEffect(() => {
         getEvents();
@@ -19,6 +24,15 @@ export default function Events() {
             .catch((error) => console.error(`Error: ${error}`));;
     }
 
+    useEffect(() => {
+        const page = parseInt(searchParams.get('page')) || 1; // Default to page 1 if not set
+        const startIndex = (page - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+    
+        // Set the subset of events for the current page
+        setDisplayedEvents(events.slice(startIndex, endIndex));
+      }, [events, searchParams]);
+
     return (
         <main>
             <section className="blurbs" id="benefits">
@@ -29,7 +43,7 @@ export default function Events() {
                         </div>
                     </div>
                     <div className="row margin-bottom-small center-xs events-container">
-                        {events.map((event, index) => <Event key={index} event={event} />)}
+                        {displayedEvents.map((event, index) => <Event key={index} event={event} />)}
                     </div>
                     {
                         localStorage.getItem('admin') === 'true' && (
@@ -38,6 +52,10 @@ export default function Events() {
                             </div>
                         )
                     }
+                </div>
+                <div className="pagination-wrapper">
+                        <Link to="/events?page=1">1</Link>
+                        <Link to="/events?page=2">2</Link>
                 </div>
             </section>
             <section className="newsletter">
