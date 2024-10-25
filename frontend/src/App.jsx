@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import React, {  useEffect } from 'react';
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
@@ -34,7 +35,18 @@ function RegisterAndLogout() {
   return <Register />
 }
 
+
+// The user is logged out when the tab is closed
 function App() {
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.clear();
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   return (
     <BrowserRouter>
