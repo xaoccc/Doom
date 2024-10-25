@@ -68,6 +68,7 @@ export default function EditService() {
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                 />
+                {/^https?:\/\/\S+$/.test(imageUrl) ? '' : <small className="error">Enter a valid web address. It should start with http:// or https://</small>}
                 <label htmlFor="description">Title:</label>
                 <input
                     className="form-input"
@@ -78,6 +79,7 @@ export default function EditService() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="description">Description:</label>
                 <textarea
                     className="form-input"
@@ -87,6 +89,7 @@ export default function EditService() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <input type="submit" value="Update service" />
             </form>
         </>
