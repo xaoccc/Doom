@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '8b2d-151-251-176-15.ngrok-free.app']
 
 # Configurations for JWT tokens (setting not coming with Django by default)
 REST_FRAMEWORK = {
