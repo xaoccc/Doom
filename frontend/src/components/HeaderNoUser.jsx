@@ -1,12 +1,38 @@
 import { Link } from 'react-router-dom'
-
+import { useState, useEffect, useRef } from 'react'
 export default function HeaderNoUser() {
+
+  const [isActive, setIsActive] = useState(false);
+  const elementRef = useRef(null);
+
+  const toggleMenu = () => {
+    setIsActive(!isActive);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      console.log(elementRef.current, e.target);
+      if (elementRef.current && !elementRef.current.contains(e.target)) {
+        setIsActive(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <header className="fade-in">
       <div className="navigation-bar flex middle-xs">
         <img src="../../public/images/icon.png" className="logo" />
         <nav className="end-xs">
-          <ul>
+          <button className="menu-toggle" onClick={toggleMenu} >
+            <i className="fas fa-bars"></i>
+          </button>
+          <ul ref={elementRef} className={isActive ? 'nav-bar-mobile' : 'nav-bar-desktop' }>
             <li><Link to="/login">Log In</Link></li>
             <li><Link to="/register">Register</Link></li>
           </ul>
