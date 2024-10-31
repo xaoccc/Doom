@@ -39,7 +39,9 @@ export default function EditEvent() {
     }, [events, eventId]);
 
     const getEvents = async () => {
-        api.get("/api/events/")
+        api.get("/api/events/", { headers: { 
+            'ngrok-skip-browser-warning': 'true' }
+         })
             .then((response) => {
                 setEvents(response.data);
             })

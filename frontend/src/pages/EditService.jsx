@@ -29,7 +29,9 @@ export default function EditService() {
     }, [services, serviceId]);
 
     const getServices = async () => {
-        api.get("/api/services/")
+        api.get("/api/services/", { headers: { 
+            'ngrok-skip-browser-warning': 'true' }
+         })
             .then((response) => {
                 setServices(response.data);
             })
