@@ -35,9 +35,7 @@ export default function Events() {
             <section className="blurbs" id="benefits">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md center-xs">
-                            <h2 className="section-title">Events</h2>
-                        </div>
+                        <h2 className="section-title">Events</h2>
                     </div>
                     <div className="row margin-bottom-small center-xs events-container">
                         {displayedEvents.map((event, index) => <Event key={index} event={event} />)}

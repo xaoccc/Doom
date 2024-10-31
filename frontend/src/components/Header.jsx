@@ -12,7 +12,6 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      console.log(elementRef.current, e.target);
       if (elementRef.current && !elementRef.current.contains(e.target)) {
         setIsActive(false);
       }

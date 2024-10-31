@@ -23,9 +23,7 @@ export default function Services() {
         <section className="services" id="services">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12 center-xs">
-                        <h2 className="section-title">Services</h2>
-                    </div>
+                    <h2 className="section-title">Services</h2>
                 </div>
                 <div className="services-container">
                     { services.map((service, index) => <Service key={index} service={service} />) }

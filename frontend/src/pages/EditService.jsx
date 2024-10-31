@@ -56,7 +56,7 @@ export default function EditService() {
     return (
 
         <>
-            <h2 className="create-note-heading">Create Service</h2>
+            <h2 className="crud-title">Create Service</h2>
             <form onSubmit={editService} className="form-container">
                 <label htmlFor="imageUrl">Image URL:</label>
                 <input

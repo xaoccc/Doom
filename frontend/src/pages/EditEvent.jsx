@@ -64,7 +64,7 @@ export default function EditEvent() {
     }
     return (
         <div>
-            <h2 className="create-note-heading">Edit Event</h2>
+            <h2 className="crud-title">Edit Event</h2>
             <form className="form-container" onSubmit={editEvent}>
             <label htmlFor="imageUrl">Image URL:</label>
                 <input

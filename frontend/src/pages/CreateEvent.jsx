@@ -31,7 +31,7 @@ export default function CreateEvent() {
 
     return (
         <div>
-            <h2 className="create-note-heading">Create Event</h2>
+            <h2 className="crud-title">Create Event</h2>
             <form className="form-container" onSubmit={createEvent}>
                 <label htmlFor="imageUrl">Image URL:</label>
                 <input
