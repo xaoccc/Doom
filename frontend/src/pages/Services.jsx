@@ -26,7 +26,7 @@ export default function Services() {
                     <h2 className="section-title">Services</h2>
                 </div>
                 <div className="services-container">
-                    { services.map((service, index) => <Service key={index} service={service} />) }
+                    {services.map((service, index) => <Service key={index} service={service} />) }
                 </div>
                 {
                     localStorage.getItem('admin') === 'true' && (
