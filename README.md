@@ -3,7 +3,7 @@
     - Setup the backend:
         - Install Visual Studio Code v1.93 or other IDE of your choice
         - Install Python v3.11
-        - Install PostgreSQL 16.4  
+        - Install PostgreSQL 16.4 and create a database to work with 
         - Check the version of python `python --version`. If it shows version 3.11 everything is OK, if not - add python path in the environmental variables. More info here: https://www.mygreatlearning.com/blog/add-python-to-path/ 
         - Create Python virtual environment: `python -m venv env`
         - Activate the virtual environment: `.\env\Scripts\Activate`

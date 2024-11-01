@@ -239,6 +239,10 @@ hr {
 	padding: 1rem;
 }
 
+.hover-content a {	
+    margin-left: 1rem;
+}
+
 /* Serivces */
 .services .icon-row, .events .icon-row {
 	padding: 30px 0;

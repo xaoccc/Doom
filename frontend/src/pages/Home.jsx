@@ -28,10 +28,10 @@ export default function Home() {
                     <h3>Hellen Loud</h3>
                     <p>Music Events Director</p>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/facebook-icon.svg" className="team-icon" />
+                      <i className="fab fa-facebook-f team-icon"></i>
                     </a>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/twitter-icon.svg" className="team-icon" />
+                      <i className="fab fa-twitter team-icon"></i>
                     </a>
                   </div>
                 </div>
@@ -51,10 +51,10 @@ export default function Home() {
                     <h3>Maverick Jinx</h3>
                     <p>Games Manager</p>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/facebook-icon.svg" className="team-icon" />
+                      <i className="fab fa-facebook-f team-icon"></i>
                     </a>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/twitter-icon.svg" className="team-icon" />
+                      <i className="fab fa-twitter team-icon"></i>
                     </a>
                   </div>
                 </div>
@@ -74,10 +74,10 @@ export default function Home() {
                     <h3>Desiree Lust</h3>
                     <p>Social Networking</p>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/facebook-icon.svg" className="team-icon" />
+                      <i className="fab fa-facebook-f team-icon"></i>
                     </a>
                     <a href="#!" target="blank" rel="noopener">
-                      <img src="./images/twitter-icon.svg" className="team-icon" />
+                      <i className="fab fa-twitter team-icon"></i>
                     </a>
                   </div>
                 </div>
