@@ -208,6 +208,7 @@ hr {
 .hover-outer-box {
 	position: relative;
 	display: flex;
+	flex-direction: column;
 	align-content: stretch;
 	align-items: stretch;
 }
