@@ -109,6 +109,10 @@ hr {
 	display: flex;
 }
 
+.row.center-xs {
+	align-items: flex-end;
+}
+
 
 .navigation-bar {
 	position: absolute;
@@ -225,7 +229,7 @@ hr {
 	transition: opacity .5s;
 	color: #fff;
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 }
 
 .hover-outer-box:hover .hover-inner-box {
@@ -491,6 +495,8 @@ footer li a{
 		padding-left: 1rem; 
 		padding-right: 1rem; 
 	}
+
+
 
 	.cta .display {
 		margin-top: 1rem;
