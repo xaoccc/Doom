@@ -29,7 +29,9 @@ export default function EditService() {
     }, [services, serviceId]);
 
     const getServices = async () => {
-        api.get("/api/services/")
+        api.get("/api/services/", { headers: { 
+            'ngrok-skip-browser-warning': 'true' }
+         })
             .then((response) => {
                 setServices(response.data);
             })
@@ -56,7 +58,7 @@ export default function EditService() {
     return (
 
         <>
-            <h2 className="create-note-heading">Create Service</h2>
+            <h2 className="crud-title">Create Service</h2>
             <form onSubmit={editService} className="form-container">
                 <label htmlFor="imageUrl">Image URL:</label>
                 <input
@@ -68,6 +70,7 @@ export default function EditService() {
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                 />
+                {/^https?:\/\/\S+$/.test(imageUrl) ? '' : <small className="error">Enter a valid web address. It should start with http:// or https://</small>}
                 <label htmlFor="description">Title:</label>
                 <input
                     className="form-input"
@@ -78,6 +81,7 @@ export default function EditService() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="description">Description:</label>
                 <textarea
                     className="form-input"
@@ -87,6 +91,7 @@ export default function EditService() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <input type="submit" value="Update service" />
             </form>
         </>

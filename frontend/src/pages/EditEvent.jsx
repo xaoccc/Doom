@@ -39,7 +39,9 @@ export default function EditEvent() {
     }, [events, eventId]);
 
     const getEvents = async () => {
-        api.get("/api/events/")
+        api.get("/api/events/", { headers: { 
+            'ngrok-skip-browser-warning': 'true' }
+         })
             .then((response) => {
                 setEvents(response.data);
             })
@@ -64,9 +66,9 @@ export default function EditEvent() {
     }
     return (
         <div>
-            <h2 className="create-note-heading">Edit Event</h2>
+            <h2 className="crud-title">Edit Event</h2>
             <form className="form-container" onSubmit={editEvent}>
-                <label htmlFor="imageUrl">Image URL:</label>
+            <label htmlFor="imageUrl">Image URL:</label>
                 <input
                     className="form-input"
                     type="text"
@@ -76,6 +78,7 @@ export default function EditEvent() {
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                 />
+                {/^https?:\/\/\S+$/.test(imageUrl) ? '' : <small className="error">Enter a valid web address. It should start with http:// or https://</small>}
                 <label htmlFor="title">Title:</label>
                 <input
                     className="form-input"
@@ -86,6 +89,7 @@ export default function EditEvent() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="description">Description:</label>
                 <textarea
                     className="form-input"
@@ -95,8 +99,10 @@ export default function EditEvent() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
+                {(description) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="date">Date:</label>
-                <textarea
+                <input
+                    type="date"
                     className="form-input"
                     id="date"
                     name="date"
@@ -104,8 +110,10 @@ export default function EditEvent() {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                 />
+                {(date) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="time">Time:</label>
-                <textarea
+                <input
+                    type="time"
                     className="form-input"
                     id="time"
                     name="time"
@@ -113,8 +121,10 @@ export default function EditEvent() {
                     onChange={(e) => setTime(e.target.value)}
                     value={time}
                 />
+                {(time) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="price">Price:</label>
-                <textarea
+                <input
+                    type="number"
                     className="form-input"
                     id="price"
                     name="price"
@@ -122,8 +132,10 @@ export default function EditEvent() {
                     onChange={(e) => setPrice(e.target.value)}
                     value={price}
                 />
+                {/^\d+$/.test(price) ? '' : <small className="error">Enter a valid price.</small>}
                 <label htmlFor="location">Location:</label>
-                <textarea
+                <input
+                    type="text"
                     className="form-input"
                     id="location"
                     name="location"
@@ -131,6 +143,9 @@ export default function EditEvent() {
                     onChange={(e) => setLocation(e.target.value)}
                     value={location}
                 />
+                {(location) ? null : <small className="error">This field is required</small>}
+
+
                 <input type="submit" value="Submit" />
             </form>
         </div>

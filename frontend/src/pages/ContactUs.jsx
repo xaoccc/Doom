@@ -36,9 +36,8 @@ export default function ContactUs() {
         <section className="contact" id="contact">
             <div className="container">
                 <div className="row">
-                    <div className="col-md center-xs">
-                        <h2 className="section-title">Contact</h2>
-                    </div>
+                    <h2 className="section-title">Contact</h2>
+
                 </div>
                 <div className="row margin-bottom-small center-xs">
                     <div className="col-md">Call Us<br />666 666 666</div>
@@ -51,39 +50,39 @@ export default function ContactUs() {
                         <div className="col-md padding-small">
                             <div className="row">
                                 <div className="col-md">
-                                    <input 
-                                        placeholder="Enter Your Name" 
-                                        type="text" name="userName" 
-                                        value={userName} 
+                                    <input
+                                        placeholder="Enter Your Name"
+                                        type="text" name="userName"
+                                        value={userName}
                                         onChange={(e) => {
                                             changeInput(e);
                                             setUserName(e.target.value);
-                                        }} 
-                                        className="margin-bottom-small" 
+                                        }}
+                                        className="margin-bottom-small"
                                     />
-                                    <input 
-                                        placeholder="Enter Your Email" 
-                                        type="email" 
-                                        name="email" 
-                                        value={email} 
+                                    <input
+                                        placeholder="Enter Your Email"
+                                        type="email"
+                                        name="email"
+                                        value={email}
                                         onChange={(e) => {
                                             changeInput(e);
-                                            setEmail(e.target.value);                                    
-                                        }} 
+                                            setEmail(e.target.value);
+                                        }}
                                     />
                                 </div>
                             </div>
                         </div>
                         <div className="col-md padding-small">
-                            <textarea 
-                                placeholder="Your Message" 
-                                name="message" 
-                                rows="8" 
-                                value={message} 
+                            <textarea
+                                placeholder="Your Message"
+                                name="message"
+                                rows="8"
+                                value={message}
                                 onChange={(e) => {
                                     changeInput(e);
-                                    setMessage(e.target.value);                                    
-                                }} 
+                                    setMessage(e.target.value);
+                                }}
                                 className="margin-bottom-small"
                             >
                             </textarea>

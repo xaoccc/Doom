@@ -21,7 +21,9 @@ export default function EventDetails() {
     }, [events, eventId]);
 
     const getEvents = async () => {
-        api.get("/api/events/")
+        api.get("/api/events/", { headers: { 
+            'ngrok-skip-browser-warning': 'true' }
+         })
             .then((response) => setEvents(response.data))
             .catch((error) => console.error(`Error: ${error}`));
     }
@@ -38,7 +40,10 @@ export default function EventDetails() {
                 <img src={currentEvent.imageUrl} className="icon event-details-img" /><br />
                 <h3>Price: {currentEvent.price} EUR</h3>
                 <p>{currentEvent.description}</p>
-                <button className="purchase-btn margin-bottom" onClick={() => onPurchase(currentEvent)}>Buy Ticket</button>
+                {(currentEvent.date && Date.parse(currentEvent.date) > Date.now()) 
+                    ? <button className="purchase-btn margin-bottom" onClick={() => onPurchase(currentEvent)}>Buy Ticket</button>
+                    : null
+                }
             </div>
         </div>
     )

@@ -28,7 +28,7 @@ export default function CreateService() {
     return (
 
         <>
-            <h2 className="create-note-heading">Create Service</h2>
+            <h2 className="crud-title">Create Service</h2>
             <form onSubmit={createService} className="form-container">
                 <label htmlFor="imageUrl">Image URL:</label>
                 <input
@@ -40,6 +40,7 @@ export default function CreateService() {
                     onChange={(e) => setImageUrl(e.target.value)}
                     value={imageUrl}
                 />
+                {/^https?:\/\/\S+$/.test(imageUrl) ? '' : <small className="error">Enter a valid web address. It should start with http:// or https://</small>}
                 <label htmlFor="description">Title:</label>
                 <input
                     className="form-input"
@@ -50,6 +51,7 @@ export default function CreateService() {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="description">Description:</label>
                 <textarea
                     className="form-input"
@@ -59,6 +61,7 @@ export default function CreateService() {
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
                 />
+                {(title) ? null : <small className="error">This field is required</small>}
                 <input type="submit" value="Submit" />
             </form>
         </>
