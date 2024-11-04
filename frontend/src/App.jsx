@@ -38,15 +38,15 @@ function RegisterAndLogout() {
 
 // The user is logged out when the tab is closed
 function App() {
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      localStorage.clear();
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     localStorage.clear();
+  //   };
+  //   window.addEventListener('beforeunload', handleBeforeUnload);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload);
+  //   };
+  // }, []);
 
   return (
     <BrowserRouter>
