@@ -526,6 +526,7 @@ footer li a{
 
 	.service, .event {
 		width: 80%;
+		margin: 0 auto;
 	}
 
 	.menu-toggle {

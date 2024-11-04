@@ -5,13 +5,9 @@ export default function Home() {
       <section className="intro" id="about-us">
         <div className="container">
           <div className="row">
-            <div className="col-md">
               <h2 className="section-title">Who we are?</h2>
-            </div>
           </div>
           <div className="row margin-bottom ">
-
-
 
           </div>
           <div className="row team center-xs">
