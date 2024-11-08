@@ -1,29 +1,19 @@
 # Doom
-1. How to run this app on Windows:
-    - Setup the backend:
-        - Install Visual Studio Code v1.93 or other IDE of your choice
-        - Install Python v3.11
-        - Install PostgreSQL 16.4 and create a database to work with 
-        - Check the version of python `python --version`. If it shows version 3.11 everything is OK, if not - add python path in the environmental variables. More info here: https://www.mygreatlearning.com/blog/add-python-to-path/ 
-        - Create Python virtual environment: `python -m venv env`
-        - Activate the virtual environment: `.\env\Scripts\Activate`
-        - Install the necessary prerequisites to run the backend: `pip install -r requirments.txt`
-
-    - Setup the front-end:
-        - Install Node.JS 20.11
-        - Setup React, Vite and the necessary packages:
-        `npm install`  
-        `npm install axios react-router-dom jwt-decode` 
-    
-    - Apply the contents from folders frontend and backend to your 
-
-    - Run the servers:
-        - Front-end server: `npm run dev`  
-        - Backend server: `python manage.py runserver` 
-
-    Notes: Versions mentioned are the oldest possible. Newer versions should be ok as well (I suppose). Prerequisites and their versions are optional, but the app may not run properly if some of them are missing or the versions are not correct.
+1. Easy run the app with Docker:
+    Just run in the terminal the command `docker-compose up --build`    
 
 2. Features:
     - Log In, Register, Log Out
     - Only superusers can create site admins
     - Site admins can add, edit and delete services and events
+    - Each user receives a welcome message and can send a message to the creator of the app (me) using the contact form
+
+NEW!!!
+The database uses your port 5433, so it will not have conflict with your existing PosgreSQL databases (if any).
+There is a file all_tables_data.sql with sample data for the app, so you can see it in action.There is a superadmin user as well as admin users, events and services, so you won't have to fill data by yourself. Just run this command in the terminal and make sure your db server is running before doing this.
+`psql -U postgres -h localhost -p 5433 -d doom_db -f all_tables_data.sql`
+
+3. Screenshots
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
