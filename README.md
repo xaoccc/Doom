@@ -11,6 +11,7 @@
 NEW!!!
 The database uses your port 5433, so it will not have conflict with your existing PosgreSQL databases (if any).
 There is a file all_tables_data.sql with sample data for the app, so you can see it in action.There is a superadmin user as well as admin users, events and services, so you won't have to fill data by yourself. Just run this command in the terminal and make sure your db server is running before doing this.
+Make sure you have postgreSQL installed on your machine.
 `psql -U postgres -h localhost -p 5433 -d doom_db -f all_tables_data.sql`
 
 3. Screenshots
