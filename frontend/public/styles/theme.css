@@ -95,6 +95,10 @@ section {
 	padding: 1rem;
 }
 
+.centered {
+	text-align: center;
+}
+
 hr {
 	border: 0;
 	border-top: 1px solid #eee;
@@ -285,6 +289,7 @@ hr {
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
 }
 
+
 .icon.event-details-img {
 	width: 40%;
 	height: 16rem;
@@ -295,6 +300,7 @@ hr {
 
 .icon.event-img:hover, .icon.service-img:hover {
 	filter: saturate(2) drop-shadow(0px 0px 9px red);
+	cursor: pointer;
 }
 
 .icon.event-details-img:hover {

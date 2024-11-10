@@ -21,7 +21,7 @@ export default function Service({ service }) {
 
     return (
         <div className="service">
-            <img src={service.imageUrl} className="icon icon service-img" /><br />
+            <img onClick={() => navigate(`/${service.title.split(' ').join('-').toLowerCase()}`)} src={service.imageUrl} className="icon icon service-img" /><br />
             <h3>{service.title}</h3>
             <p>{service.description}</p>
             {
