@@ -45,7 +45,7 @@ export default function EventsArchive() {
             <section className="blurbs" id="benefits">
                 <div className="container">
                     <div className="row">
-                        <h2 className="section-title">All Events</h2>
+                        <h2 className="section-title">Passed Events</h2>
                     </div>
                     <div className="row margin-bottom-small center-xs events-container">
                         {displayedEvents.map((event, index) => <Event key={index} event={event} />)}

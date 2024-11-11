@@ -22,7 +22,7 @@ export default function Event({ event }) {
 
     return (
         <div className="service">
-            <img src={event.imageUrl} className="icon icon service-img" /><br />
+            <img onClick={() => navigate(`/events/${event.id}`)} src={event.imageUrl} className="icon icon service-img" /><br />
             <h3>{event.title}</h3>
             <Link className='button' to={`/events/${event.id}`}>More</Link>
             {

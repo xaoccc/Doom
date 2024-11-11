@@ -95,6 +95,17 @@ section {
 	padding: 1rem;
 }
 
+.centered {
+	text-align: center;
+}
+
+.flex-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 hr {
 	border: 0;
 	border-top: 1px solid #eee;
@@ -247,20 +258,32 @@ hr {
     margin-left: 1rem;
 }
 
-/* Serivces */
-.services .icon-row, .events .icon-row {
+/* Items */
+.services .icon-row, .events .icon-row, .escape-rooms .icon-row {
 	padding: 30px 0;
 }
 
-.service, .event {
+.service, .event, .escape-room {
 	width: 30%;
 	height: 100%;
 }
 
-.services-container, .events-container {
+.services-container, .events-container, .rooms-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+}
+
+.escape-room p {
+	display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 9.5em;
+    line-height: 1.5em;
+    text-align: justify;
+	cursor: pointer;
 }
 
 
@@ -285,6 +308,7 @@ hr {
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
 }
 
+
 .icon.event-details-img {
 	width: 40%;
 	height: 16rem;
@@ -295,6 +319,7 @@ hr {
 
 .icon.event-img:hover, .icon.service-img:hover {
 	filter: saturate(2) drop-shadow(0px 0px 9px red);
+	cursor: pointer;
 }
 
 .icon.event-details-img:hover {
@@ -517,7 +542,7 @@ footer li a{
 		z-index: -1;
 	}
 
-	.services-container, .events-container {
+	.services-container, .events-container, .rooms-container {
 		flex-direction: column;
 		align-items: center;
 	}

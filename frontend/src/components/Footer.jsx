@@ -20,13 +20,19 @@ export default function Footer() {
   return (
     <footer>
       <div className="container">
+        <div className="row margin-bottom-small">      
+          { (isAutorized === true) ?  
+            <div className="col-md-6">
+              <h3>About us</h3>
+              <p>We offer any kind of entertainment allowed by the human laws</p>
+            </div> :
+            <div className="col-md-12">
+              <h3>About us</h3>
+              <p className="centered">We offer any kind of entertainment allowed by the human laws</p>
+              </div>
+            }
 
-        <div className="row margin-bottom-small">
-          <div className="col-md-6">
-            <h3>About us</h3>
-            <p>We offer any kind of entertainment allowed by the human laws</p>
-          </div>
-          {(isAutorized === true) ?            
+          { (isAutorized === true) ?            
             <div className="col-md-6">
               <h3>Links</h3>
               <ul>
