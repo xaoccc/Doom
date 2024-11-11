@@ -12,6 +12,7 @@ import EditEvent from './pages/EditEvent'
 import Events from './pages/Events'
 import EventsArchive from './pages/EventsArchive'
 import EventDetails from './pages/EventDetails'
+import MessageSent from './pages/MessageSent';
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -66,6 +67,7 @@ function App() {
           <Route path="/events" element={<ProtectedRoute><Events /></ProtectedRoute>} />
           <Route path="/events-archive" element={<ProtectedRoute><EventsArchive /></ProtectedRoute>} />
           <Route path="/events/:eventId" element={<ProtectedRoute><EventDetails /></ProtectedRoute>} />
+          <Route path="/success" element={<ProtectedRoute><MessageSent /></ProtectedRoute>} />
 
           {/* Routes for users who are logged in as admin */}
           <Route path="/events/create" element={<AdminProtectedRoute><CreateEvent /></AdminProtectedRoute>} />

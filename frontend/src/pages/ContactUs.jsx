@@ -23,7 +23,7 @@ export default function ContactUs() {
             .then((res) => {
                 if (res.status === 200) {
                     console.log("Email sent successfully!");
-                    navigate('/');
+                    navigate('/success/');
 
                 } else {
                     console.log("Emil not sent!");

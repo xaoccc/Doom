@@ -99,6 +99,13 @@ section {
 	text-align: center;
 }
 
+.flex-center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 hr {
 	border: 0;
 	border-top: 1px solid #eee;
