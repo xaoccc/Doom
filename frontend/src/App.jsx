@@ -16,6 +16,8 @@ import MessageSent from './pages/MessageSent'
 import EscapeRooms from './pages/EscapeRooms'
 import CreateEscapeRoom from './pages/CreateEscapeRoom'
 import EditEscapeRoom from './pages/EditEscapeRoom'
+import EscapeRoomDetails from './pages/EscapeRoomDetails'
+import UnderConstruction from './pages/UnderConstruction';
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -27,6 +29,7 @@ import NotAuthorized from './pages/NotAuthorized'
 import '../public/styles/normalize.min.css'
 import '../public/styles/flexboxgrid.css'
 import '../public/styles/theme.css'
+
 
 function Logout() {
   localStorage.clear();
@@ -74,6 +77,11 @@ function App() {
           <Route path="/escape-rooms" element={<ProtectedRoute><EscapeRooms /></ProtectedRoute>} />
           <Route path="/escape-rooms/create" element={<ProtectedRoute><CreateEscapeRoom /></ProtectedRoute>} />
           <Route path="/escape-rooms/edit/:escapeRoomId" element={<ProtectedRoute><EditEscapeRoom /></ProtectedRoute>} />
+          <Route path="/escape-rooms/:escapeRoomId" element={<ProtectedRoute><EscapeRoomDetails /></ProtectedRoute>} />
+          <Route path="/computer-club" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
+          <Route path="/strip-club" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
+          <Route path="/marketplace" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
+          <Route path="/bet-zone" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
 
           {/* Routes for users who are logged in as admin */}
           <Route path="/events/create" element={<AdminProtectedRoute><CreateEvent /></AdminProtectedRoute>} />
