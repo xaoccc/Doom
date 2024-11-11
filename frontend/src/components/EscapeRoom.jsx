@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import api from "../api"
 
 export default function EscapeRoom({ escapeRoom }) {
@@ -14,7 +15,6 @@ export default function EscapeRoom({ escapeRoom }) {
             e.target.style.webkitBoxOrient = "vertical";
         }
     }
-
 
     const onDelete = async (id) => {
 
@@ -33,8 +33,9 @@ export default function EscapeRoom({ escapeRoom }) {
     return (
         <section className="escape-room" id="escape-room">
             <h3 className="section-title">{escapeRoom.name}</h3>
-            <img className="icon icon service-img" src={escapeRoom.imageUrl} alt="" />
+            <img className="icon icon service-img" src={escapeRoom.imageUrl} onClick={() => navigate(`/escape-rooms/${escapeRoom.id}`)} alt="" />
             <p className="expand" onClick={expandText}>{escapeRoom.description}</p>
+            <Link className='button' to={`/escape-rooms/${escapeRoom.id}`}>More</Link>
             {
                 localStorage.getItem('admin') === 'true' && (
                     <>

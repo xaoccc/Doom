@@ -66,9 +66,15 @@ INSERT INTO public.services_service VALUES (2, 'https://raw.githubusercontent.co
 INSERT INTO public.services_service VALUES (5, 'https://raw.githubusercontent.com/xaoccc/Doom/refs/heads/main/frontend/public/images/service-5.jpg', 'Marketplace', 'Here you can buy AND SELL bands merchandise, clothes, souvenirs, computers, mobile phones, alcohol, food and more...');
 
 
---
--- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
+INSERT INTO public.escaperooms_escaperoom VALUES (2, 'The Cabin', 'Welcome to The Cabin, a chilling escape room experience set in a remote, isolated woodland hideaway. In this game, you and your team find yourselves trapped in an old, dimly-lit cabin after a sudden storm derails your plans. Mysterious symbols line the walls, strange relics rest on every shelf, and the feeling that you’re being watched intensifies as you explore deeper. Legends say the cabin belonged to a recluse with dark secrets, and your only chance of escape is to solve the puzzles left behind and uncover the truth.', 8, NULL, 60, 35.00, '2024-11-11 13:40:02.285222+02', '2024-11-11 13:45:52.554595+02', 'https://img.craiyon.com/2024-11-11/bXVgFVNvSkWs0bHh0hFdRw.webp');
+INSERT INTO public.escaperooms_escaperoom VALUES (1, 'The Old Attic', 'Welcome to The Old Attic, a spine-chilling escape room where the forgotten meets the mysterious. You and your friends have inherited an old mansion, but during a casual exploration, you stumble upon a locked attic door. Curiosity gets the best of you, and you make your way inside, only to find yourselves trapped. The attic is cluttered with dusty trunks, antique furniture, and relics from generations past. Shadows seem to move, and strange sounds echo through the rafters.
+
+Rumor has it that the attic holds the secrets of the mansion’s former owner, a reclusive collector with a fascination for the occult. To escape, you’ll need to solve eerie puzzles, search for hidden compartments, and piece together the attic’s cryptic history. With only 60 minutes on the clock, you’ll face the unknown, where every creak, whisper, and flicker could lead you closer to freedom—or keep you forever sealed in The Old Attic. Will you make it out, or will the attic’s secrets claim you?', 7, NULL, 60, 120.00, '2024-11-11 12:30:56.123467+02', '2024-11-11 13:48:05.94225+02', 'https://img.craiyon.com/2024-11-11/qVbgFxW1QeSSMwg2DwDtjA.webp');
+INSERT INTO public.escaperooms_escaperoom VALUES (3, 'The Dusty Storage Room', 'Step into The Dusty Storage Room, an escape room adventure that hides mystery within every shadowed corner. You and your team find yourselves locked inside this forgotten room deep within an old building, untouched for decades. Dust blankets the shelves, faded boxes are piled high, and remnants of long-abandoned belongings lie scattered about. The air is thick and musty, carrying the faintest scent of something peculiar, something that makes the hairs on your neck stand up.
+
+Local legends tell of a hidden item left by the building’s former owner, an eccentric inventor known for his strange experiments. To escape, you’ll need to sift through layers of dust, crack forgotten codes, and decipher bizarre clues left in notebooks, trinkets, and tools. With just 60 minutes to make your way out, you’ll need to rely on teamwork, clever thinking, and maybe a little bit of luck to uncover the secrets of The Dusty Storage Room. Will you find the exit—or get lost in the dust of time?', 5, NULL, 60, 110.00, '2024-11-11 13:51:10.212465+02', '2024-11-11 13:51:32.019653+02', 'https://img.craiyon.com/2024-11-11/OPVXm5obTm2G8WC_SzoUBQ.webp');
+
+
 
 SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
 
