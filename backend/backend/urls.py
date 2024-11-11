@@ -7,6 +7,7 @@ urlpatterns = [
     path('', include('backend.profiles.urls')),
     path('api/services/', include('backend.services.urls')),
     path('api/events/', include('backend.events.urls')),
+    path('api/escaperooms/', include('backend.escaperooms.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='get_token'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='refresh_token'),
 ]

@@ -26,10 +26,10 @@ export default function Service({ service }) {
             <p>{service.description}</p>
             {
                 localStorage.getItem('admin') === 'true' && (
-                    <>
-                        <button className="delete-button" onClick={() => onDelete(service.pk)}>Delete</button>
-                        <button className="edit-button" onClick={() => navigate(`/services/edit/${service.pk}`)} >Edit</button>
-                    </>
+                  <>
+                    <button className="delete-button" onClick={() => onDelete(service.pk)}>Delete</button>
+                    <button className="edit-button" onClick={() => navigate(`/services/edit/${service.pk}`)} >Edit</button>
+                  </>
                 )
             }
 

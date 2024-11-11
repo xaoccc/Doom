@@ -258,17 +258,17 @@ hr {
     margin-left: 1rem;
 }
 
-/* Serivces */
-.services .icon-row, .events .icon-row {
+/* Items */
+.services .icon-row, .events .icon-row, .escape-rooms .icon-row {
 	padding: 30px 0;
 }
 
-.service, .event {
+.service, .event, .escape-room {
 	width: 30%;
 	height: 100%;
 }
 
-.services-container, .events-container {
+.services-container, .events-container, .rooms-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -530,7 +530,7 @@ footer li a{
 		z-index: -1;
 	}
 
-	.services-container, .events-container {
+	.services-container, .events-container, .rooms-container {
 		flex-direction: column;
 		align-items: center;
 	}
