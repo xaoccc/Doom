@@ -8,7 +8,7 @@ export default function Services() {
 
     useEffect(() => {
         getServices();
-    }, []);
+    }, [services]);
 
     const getServices = async () => {
         api.get("/api/services/", { headers: { 

@@ -8,7 +8,7 @@ export default function EscapeRooms() {
 
     useEffect(() => {
         getEscapeRooms();
-    }, []);
+    }, [escapeRooms]);
 
     const getEscapeRooms = async () => {
         api.get("/api/escaperooms/")

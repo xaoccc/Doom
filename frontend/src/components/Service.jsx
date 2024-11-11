@@ -11,7 +11,7 @@ export default function Service({ service }) {
             if (res.status === 204) {
               console.log("Service deleted successfully!");
             //   This app should have been SPA, but in some cases it's easier to reload pages
-              location.reload();
+            navigate('/services/', { replace: true });
             } else {
               console.log("Service was not deleted!");
             }
