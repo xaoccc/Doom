@@ -1,10 +1,15 @@
 import EscapeRoom from "../components/EscapeRoom"
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import api from '../api';
 
 export default function EscapeRooms() {
     const [escapeRooms, setEscapeRooms] = useState([]);
+    const [pages, setPages] = useState([]);
+    const [displayedRooms, setDisplayedRooms] = useState([]);
+    const ITEMS_PER_PAGE = 6;
+    const [searchParams] = useSearchParams();
+    
 
     useEffect(() => {
         getEscapeRooms();
@@ -13,11 +18,23 @@ export default function EscapeRooms() {
     const getEscapeRooms = async () => {
         api.get("/api/escaperooms/")
         .then((response) => {
+            const p = [];
+            for (let i = 0; i < Math.ceil(response.data.length / ITEMS_PER_PAGE); i++) {
+                p.push(i + 1);                    
+            }
+            setPages(p);                  
             setEscapeRooms(response.data);
         })
         .catch((error) => console.error(`Error: ${error}`));;
     }
 
+    useEffect(() => {
+        const page = parseInt(searchParams.get('page')) || 1;
+        const startIndex = (page - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;       
+
+        setDisplayedRooms(escapeRooms.slice(startIndex, endIndex));
+      }, [escapeRooms, searchParams]);
 
 
     return (
@@ -27,7 +44,7 @@ export default function EscapeRooms() {
                     <h2 className="section-title">Escape Rooms</h2>
                 </div>
                 <div className="rooms-container">
-                    {escapeRooms.map((escapeRoom, index) => <EscapeRoom key={index} escapeRoom={escapeRoom} />) }
+                    {displayedRooms.map((escapeRoom, index) => <EscapeRoom key={index} escapeRoom={escapeRoom} />) }
                 </div>
                 {
                     localStorage.getItem('admin') === 'true' && (
@@ -36,6 +53,9 @@ export default function EscapeRooms() {
                         </div>
                     )
                 }
+            </div>
+            <div className="pagination-wrapper">
+                {pages.map((page, index) => <Link key={index} to={`/escape-rooms?page=${page}`}>{page}</Link>)}
             </div>
         </section>
 

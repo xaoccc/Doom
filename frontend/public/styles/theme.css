@@ -72,7 +72,7 @@ img {
 }
 
 section {
-	margin: 10rem auto;
+	margin: 6rem auto;
 }
 
 .adminPanel {
@@ -261,6 +261,10 @@ hr {
 /* Items */
 .services .icon-row, .events .icon-row, .escape-rooms .icon-row {
 	padding: 30px 0;
+}
+
+.escape-room {
+	margin-bottom: 3rem;
 }
 
 .service, .event, .escape-room {
