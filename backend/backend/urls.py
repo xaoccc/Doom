@@ -10,4 +10,6 @@ urlpatterns = [
     path('api/escaperooms/', include('backend.escaperooms.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='get_token'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='refresh_token'),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.socialaccount.urls')),
 ]

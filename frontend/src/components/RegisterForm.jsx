@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN, ADMIN } from "../constants";
 import LoadingIndicator from "./LoadingIndicator";
 
@@ -94,6 +94,9 @@ export default function RegisterForm({ route, method }) {
                 placeholder="Password"
                 required
             />
+            <h4>
+                <Link to='http://127.0.0.1:8000/accounts/google/login/?process=connect'>Or use Google</Link>
+            </h4>
             {method === 'register' && (
                 <>
                     <input
