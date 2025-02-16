@@ -43,6 +43,12 @@ jobs:
       - name: Build React (Vite) app
         run: npm run build
         working-directory: frontend
+        
+      # Move React build to Django static folder
+      - name: Move React build to Django static folder
+        run: |
+          mkdir -p backend/static
+          cp -r frontend/build/* backend/static/
 
       # Optional: Add step to run tests here (PyTest, Django test suites, React tests)
 
