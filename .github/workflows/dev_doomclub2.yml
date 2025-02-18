@@ -35,6 +35,11 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
+      - name: ADD ENV VARIABLES
+        run: | 
+          echo "WEBSITE_HOSTNAME=doomclub2-fkhzh6hge7fkdvak.italynorth-01.azurewebsites.net" >> $GITHUB_ENV
+          echo "AZURE_POSTGRESQL_CONNECTIONSTRING=dbname=doomclub2-database host=doomclub2-server.postgres.database.azure.com port=5432 sslmode=require user=xfhvudtgrw password=iXGOIee9tbfDVM7$" >> $GITHUB_ENV
+
       - name: Collect static files
         run: | 
           cd backend
