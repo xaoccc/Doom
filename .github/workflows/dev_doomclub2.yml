@@ -35,14 +35,14 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
-          
+
       - name: Debug Environment Variables
         run: env
 
-      # - name: Collect static files
-      #   run: | 
-      #     cd backend
-      #     python manage.py collectstatic --noinput
+      - name: Collect static files
+        run: | 
+          cd backend
+          python manage.py collectstatic --noinput
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
