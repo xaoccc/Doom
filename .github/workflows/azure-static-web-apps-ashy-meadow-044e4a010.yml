@@ -20,6 +20,8 @@ jobs:
           submodules: true
           lfs: false
       - name: Build And Deploy
+        env:
+          VITE_API_URL_PROD: ${{ secrets.VITE_API_URL_PROD }}
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
