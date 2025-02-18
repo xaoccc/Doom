@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'backend.profiles',
     'backend.services',
@@ -69,6 +70,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -102,30 +104,39 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # For local development
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PWD'),
-        'PORT': os.getenv('DB_PORT'),
-        'HOST': os.getenv('DB_HOST'), 
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'USER': os.getenv('DB_USER'),
+#         'PASSWORD': os.getenv('DB_PWD'),
+#         'PORT': os.getenv('DB_PORT'),
+#         'HOST': os.getenv('DB_HOST'), 
+#     }
+# }
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
 }
 
 # Azure PostgreSQL database
-# CONNECTION = os.getenv('AZURE_POSTGRESQL_CONNECTIONSTRING')
-# CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
+CONNECTION = os.getenv('AZURE_POSTGRESQL_CONNECTIONSTRING')
+CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": CONNECTION_STR['dbname'],
-#         "HOST": CONNECTION_STR['host'],
-#         "USER": CONNECTION_STR['user'],
-#         "PASSWORD": CONNECTION_STR['password'],
-#     }
-# }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": CONNECTION_STR['dbname'],
+        "HOST": CONNECTION_STR['host'],
+        "USER": CONNECTION_STR['user'],
+        "PASSWORD": CONNECTION_STR['password'],
+    }
+}
 
 
 # Password validation
