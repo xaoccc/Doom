@@ -35,12 +35,16 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
-      - name: ADD ENV VARIABLES
-        run: | 
-          echo "WEBSITE_HOSTNAME=doomclub2-fkhzh6hge7fkdvak.italynorth-01.azurewebsites.net" >> $GITHUB_ENV
-          echo "AZURE_POSTGRESQL_CONNECTIONSTRING=dbname=doomclub2-database host=doomclub2-server.postgres.database.azure.com port=5432 sslmode=require user=xfhvudtgrw password=iXGOIee9tbfDVM7$" >> $GITHUB_ENV
+      # - name: ADD ENV VARIABLES
+      #   run: | 
+      #     echo "DJANGO_SECRET_KEY=SECRET_KEY=django-insecure-o*&e!n&&q9wc-n21^jtq)52ld0wq80__ile-s3qbw#vc_%bohe" >> $GITHUB_ENV
+      #     echo "WEBSITE_HOSTNAME=doomclub2-fkhzh6hge7fkdvak.italynorth-01.azurewebsites.net" >> $GITHUB_ENV
+      #     echo "AZURE_POSTGRESQL_CONNECTIONSTRING=dbname=doomclub2-database host=doomclub2-server.postgres.database.azure.com port=5432 sslmode=require user=xfhvudtgrw password=iXGOIee9tbfDVM7$" >> $GITHUB_ENV
 
       - name: Collect static files
+        env:
+          AZURE_POSTGRESQL_CONNECTIONSTRING: ${{ secrets.AZURE_POSTGRESQL_CONNECTIONSTRING }}
+          WEBSITE_HOSTNAME: ${{ secrets.WEBSITE_HOSTNAME }}
         run: | 
           cd backend
           python manage.py collectstatic --noinput
