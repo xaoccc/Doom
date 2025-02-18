@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.getenv('WEBSITE_HOSTNAME')]
-CSRF_TRUSTED_ORIGINS = ['https://'+os.getenv('WEBSITE_HOSTNAME', 'localhost')]
+CSRF_TRUSTED_ORIGINS = ['https://'+os.getenv('WEBSITE_HOSTNAME')]
 
 # Configurations for JWT tokens (setting not coming with Django by default)
 REST_FRAMEWORK = {
