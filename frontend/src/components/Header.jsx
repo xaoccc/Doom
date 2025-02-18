@@ -38,7 +38,7 @@ export default function Header() {
   return (
     <header className="fade-in">
       <div className="navigation-bar flex middle-xs">
-        <img src="../../public/images/icon.png" className="logo" />
+        <img src="/images/icon.png" className="logo" />
         <nav className="end-xs">
           <button className="menu-toggle" onClick={toggleMenu}>
             <i className="fas fa-bars"></i>
