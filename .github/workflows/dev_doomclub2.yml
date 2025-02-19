@@ -35,7 +35,7 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
-      - name: Collect static files
+      - name: Collect static files and set environment variables
         env:
           AZURE_POSTGRESQL_CONNECTIONSTRING: ${{ secrets.AZURE_POSTGRESQL_CONNECTIONSTRING }}
           WEBSITE_HOSTNAME: ${{ secrets.WEBSITE_HOSTNAME }}
