@@ -48,12 +48,7 @@ export default function Footer() {
 
       </div>
       <div className="row secondary-footer">
-        <div className="col-md">
-          <p>Club Doom © 2024</p>
-        </div>
-        <div className="col-md end-md">
-          <p><a href="#">Imprint</a> | <a href="#">Data Protection</a></p>
-        </div>
+        <div className="center-md">Club Doom © 2024</div>
       </div>
     </footer>
 

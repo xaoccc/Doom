@@ -546,7 +546,11 @@ footer li a{
 	}
 
 	header {	
-		margin-bottom: 5rem;
+		margin-bottom: 7rem;
+	}
+
+	main {
+		width: 100%;
 	}
 
 	.services, .intro, main, .contact, .events, .container, .fade-in + div {
@@ -559,8 +563,12 @@ footer li a{
 		align-items: center;
 	}
 
+	.intro {
+		width: 90%;
+	}
+
 	.service, .event {
-		width: 80%;
+		width: 100%;
 		margin: 0 auto;
 	}
 
@@ -602,7 +610,6 @@ footer li a{
 	}
 
 
-
 	.navigation-bar nav {
 		display: flex;
 		flex-direction: column;
@@ -615,9 +622,19 @@ footer li a{
 		display: none;
 	}
 
+	.icon.event-details-img {
+		width: 100%;
+	}
+
+	.event-details {
+		width: 90%;
+		margin: 0 auto;
+	}
+
 	.form-container {
 		position: relative;
 		z-index: -1;
+		width: 80%;
 	}
 
 	footer .col-md-6 {
