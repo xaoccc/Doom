@@ -21,6 +21,8 @@ body {
 	color: #b90707; 	
 }
 
+
+
 #root {
 	min-height: 100vh;
 	display: flex;
@@ -543,7 +545,9 @@ footer li a{
 		text-align: center;
 	}
 
-	
+	header {	
+		margin-bottom: 5rem;
+	}
 
 	.services, .intro, main, .contact, .events, .container, .fade-in + div {
 		position: relative;
@@ -597,9 +601,6 @@ footer li a{
 		padding: 0;
 	}
 
-	.form-container {
-		width: 80%;
-	}
 
 
 	.navigation-bar nav {
@@ -612,6 +613,11 @@ footer li a{
 
 	.hero-text {
 		display: none;
+	}
+
+	.form-container {
+		position: relative;
+		z-index: -1;
 	}
 
 	footer .col-md-6 {
