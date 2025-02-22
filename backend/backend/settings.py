@@ -29,10 +29,10 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 ENV = os.getenv('ENV')
-# if ENV == 'production':
-DEBUG = False
-# else:
-#     DEBUG = True
+if ENV == 'production':
+    DEBUG = False
+else:
+    DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.getenv('WEBSITE_HOSTNAME')]
 CSRF_TRUSTED_ORIGINS = ['https://'+os.getenv('WEBSITE_HOSTNAME')]
