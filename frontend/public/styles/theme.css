@@ -21,6 +21,8 @@ body {
 	color: #b90707; 	
 }
 
+
+
 #root {
 	min-height: 100vh;
 	display: flex;
@@ -72,7 +74,7 @@ img {
 }
 
 section {
-	margin: 10rem auto;
+	margin: 6rem auto;
 }
 
 .adminPanel {
@@ -261,6 +263,10 @@ hr {
 /* Items */
 .services .icon-row, .events .icon-row, .escape-rooms .icon-row {
 	padding: 30px 0;
+}
+
+.escape-room {
+	margin-bottom: 3rem;
 }
 
 .service, .event, .escape-room {
@@ -539,7 +545,13 @@ footer li a{
 		text-align: center;
 	}
 
-	
+	header {	
+		margin-bottom: 7rem;
+	}
+
+	main {
+		width: 100%;
+	}
 
 	.services, .intro, main, .contact, .events, .container, .fade-in + div {
 		position: relative;
@@ -551,8 +563,12 @@ footer li a{
 		align-items: center;
 	}
 
+	.intro {
+		width: 90%;
+	}
+
 	.service, .event {
-		width: 80%;
+		width: 100%;
 		margin: 0 auto;
 	}
 
@@ -593,10 +609,6 @@ footer li a{
 		padding: 0;
 	}
 
-	.form-container {
-		width: 80%;
-	}
-
 
 	.navigation-bar nav {
 		display: flex;
@@ -608,6 +620,21 @@ footer li a{
 
 	.hero-text {
 		display: none;
+	}
+
+	.icon.event-details-img {
+		width: 100%;
+	}
+
+	.event-details {
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.form-container {
+		position: relative;
+		z-index: -1;
+		width: 80%;
 	}
 
 	footer .col-md-6 {

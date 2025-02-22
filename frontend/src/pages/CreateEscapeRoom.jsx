@@ -13,7 +13,7 @@ export default function CreateEscapeRoom() {
   
     const createEscapeRoom = async (e) => {
       e.preventDefault();    
-      api.post("/api/escaperooms/create/", { name, description, difficulty, duration, price })
+      api.post("/api/escaperooms/create/", { imageUrl, name, description, difficulty, duration, price })
         .then((res) => {
           if (res.status === 201) {
             console.log("Escape Room added successfully!");

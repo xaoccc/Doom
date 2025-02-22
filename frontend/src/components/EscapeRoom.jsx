@@ -1,20 +1,22 @@
-import { useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+import { useState } from "react"
 import api from "../api"
 
 export default function EscapeRoom({ escapeRoom }) {
     const navigate = useNavigate();
-    const expandText = (e) => {
-        if (e.target.style.overflow === "hidden") {
-            e.target.style.overflow = "visible";
-            e.target.style.maxHeight = "unset";
-            e.target.style.webkitBoxOrient = "unset";
-        } else {
-            e.target.style.overflow = "hidden";
-            e.target.style.maxHeight = "9.5em";
-            e.target.style.webkitBoxOrient = "vertical";
-        }
-    }
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setIsExpanded((prev) => !prev);
+    };
+
+    const textStyle = {
+        overflow: isExpanded ? "visible" : "hidden",
+        maxHeight: isExpanded ? "unset" : "9.5em",
+        WebkitBoxOrient: isExpanded ? "unset" : "vertical",
+        display: "-webkit-box",
+        WebkitLineClamp: isExpanded ? "unset" : "5",
+    };
 
     const onDelete = async (id) => {
 
@@ -31,10 +33,10 @@ export default function EscapeRoom({ escapeRoom }) {
 
     }
     return (
-        <section className="escape-room" id="escape-room">
+        <div className="escape-room" id="escape-room">
             <h3 className="section-title">{escapeRoom.name}</h3>
             <img className="icon icon service-img" src={escapeRoom.imageUrl} onClick={() => navigate(`/escape-rooms/${escapeRoom.id}`)} alt="" />
-            <p className="expand" onClick={expandText}>{escapeRoom.description}</p>
+            <p className="expand" style={textStyle} onClick={toggleExpand}>{escapeRoom.description}</p>
             <Link className='button' to={`/escape-rooms/${escapeRoom.id}`}>More</Link>
             {
                 localStorage.getItem('admin') === 'true' && (
@@ -44,6 +46,6 @@ export default function EscapeRoom({ escapeRoom }) {
                     </>
                 )
             }
-        </section>
+        </div>
     )
 }

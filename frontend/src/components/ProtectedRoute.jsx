@@ -11,13 +11,13 @@ function ProtectedRoute({ children }) {
     useEffect(() => {
         auth().catch((error) => {
             console.log(error);
-            setIsAutorized(false);  
+            setIsAutorized(false);
         })
     }, [])
 
     const refreshToken = async () => {
         const refreshToken = localStorage.getItem(REFRESH_TOKEN);
-        try { 
+        try {
             // Send a request to the server to refresh the token
             const response = await api.post('/api/token/refresh/', { refresh: refreshToken });
             if (response.status === 200) {
@@ -48,6 +48,16 @@ function ProtectedRoute({ children }) {
             await refreshToken();
         } else {
             setIsAutorized(true);
+            // Set up a timer to refresh the token before it expires
+            const expirationTime = tokenExpiration * 1000; // Convert to milliseconds
+            const timeLeft = expirationTime - Date.now();
+            const refreshThreshold = 10 * 60 * 1000; // Refresh token 5 minutes before expiration
+
+            if (timeLeft > refreshThreshold) {
+                setTimeout(refreshToken, timeLeft - refreshThreshold);
+            } else {
+                await refreshToken();
+            }
         }
     }
 
