@@ -103,17 +103,33 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+if DEBUG:
 # For local development
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME'),
-#         'USER': os.getenv('DB_USER'),
-#         'PASSWORD': os.getenv('DB_PWD'),
-#         'PORT': os.getenv('DB_PORT'),
-#         'HOST': os.getenv('DB_HOST'), 
-#     }
-# }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PWD'),
+            'PORT': os.getenv('DB_PORT'),
+            'HOST': os.getenv('DB_HOST'), 
+        }
+    }
+else:
+    # Production (Azure PostgreSQL database):
+    CONNECTION = os.getenv('AZURE_POSTGRESQL_CONNECTIONSTRING')
+    CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": CONNECTION_STR['dbname'],
+            "HOST": CONNECTION_STR['host'],
+            "USER": CONNECTION_STR['user'],
+            "PASSWORD": CONNECTION_STR['password'],
+        }
+    }
 
 STORAGES = {
     "default": {
@@ -124,19 +140,7 @@ STORAGES = {
     },
 }
 
-# Azure PostgreSQL database
-CONNECTION = os.getenv('AZURE_POSTGRESQL_CONNECTIONSTRING')
-CONNECTION_STR = {pair.split('=')[0]:pair.split('=')[1] for pair in CONNECTION.split(' ')}
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": CONNECTION_STR['dbname'],
-        "HOST": CONNECTION_STR['host'],
-        "USER": CONNECTION_STR['user'],
-        "PASSWORD": CONNECTION_STR['password'],
-    }
-}
 
 
 # Password validation
