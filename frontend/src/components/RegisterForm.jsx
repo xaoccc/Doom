@@ -8,6 +8,7 @@ import LoadingIndicator from "./LoadingIndicator";
 export default function RegisterForm({ route, method }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordRepeat, setPasswordRepeat] = useState('');
     const [age, setAge] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -21,6 +22,13 @@ export default function RegisterForm({ route, method }) {
         }
     }
 
+    function createErrorMesage(target, message) {
+        const errorMessage = document.createElement('p');
+        errorMessage.classList.add('error-message');
+        errorMessage.textContent = message;
+        target.insertAdjacentElement('afterend', errorMessage);
+    }
+
     function validate(e, message) {
         const nextElement = e.target.nextElementSibling;
         if (nextElement && nextElement.classList.contains('error-message')) {
@@ -28,17 +36,19 @@ export default function RegisterForm({ route, method }) {
         }
 
         e.target.setCustomValidity(' ');
+        createErrorMesage(e.target, message);
 
-        const errorMessage = document.createElement('p');
-        errorMessage.classList.add('error-message');
-        errorMessage.textContent = message;
-        e.target.insertAdjacentElement('afterend', errorMessage);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        if (method === 'register' && (age < 18 || age > 120 || password.length < 8)) {
+        if (password !== passwordRepeat) {
+            createErrorMesage(document.querySelector('#password-repeat'), 'Passwords do not match');
+            setLoading(false);
+            return;
+        }
+        if (method === 'register' && (age < 18 || age > 120 || password.length < 8 || password !== passwordRepeat)) {
             setLoading(false);
             return;
         }
@@ -59,6 +69,11 @@ export default function RegisterForm({ route, method }) {
 
         } catch (error) {
             console.error(error);
+            if (error.response && error.response.status === 400) {
+                createErrorMesage(document.querySelector('.form-button'), 'This e-mail is already registered!');
+            } else {
+                console.log("An unexpected error occurred.");
+            }
         } finally {
             setLoading(false);
         }
@@ -97,6 +112,21 @@ export default function RegisterForm({ route, method }) {
             {method === 'register' && (
                 <>
                     <input
+                        type="password"
+                        id="password-repeat"
+                        className="form-input"
+                        value={passwordRepeat}
+                        pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).+"
+                        minLength="8"
+                        onChange={(e) => {
+                            changeInput(e);
+                            setPasswordRepeat(e.target.value);
+                        }}
+                        onInvalid={(e) => validate(e, 'Please enter a valid password. Your password must contain at least 8 charactrs, one number, one lowercase and one uppercase letter')}
+                        placeholder="Repeat Password"
+                        required
+                    />
+                    <input
                         type="number"
                         className="form-input"
                         value={age}
@@ -108,7 +138,7 @@ export default function RegisterForm({ route, method }) {
                         }}
                         onInvalid={(e) => validate(e, 'You must be 18 or older to register')}
                         required
-                        
+
                     />
 
                 </>)
