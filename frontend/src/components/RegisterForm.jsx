@@ -34,16 +34,14 @@ export default function RegisterForm({ route, method }) {
         if (nextElement && nextElement.classList.contains('error-message')) {
             nextElement.remove();
         }
-
         e.target.setCustomValidity(' ');
         createErrorMesage(e.target, message);
-
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        if (password !== passwordRepeat) {
+        if (method === 'register' && password !== passwordRepeat) {
             createErrorMesage(document.querySelector('#password-repeat'), 'Passwords do not match');
             setLoading(false);
             return;
