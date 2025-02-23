@@ -13,6 +13,7 @@ export default function UserProfileView() {
     const getUserData = async () => {
         api.get("/api/user/view/")
         .then((response) => {
+            console.log(response.data);
             setUser(response.data.filter(user => user.email === localStorage.getItem('email')));
         })
         .catch((error) => console.error(`Error: ${error}`));
