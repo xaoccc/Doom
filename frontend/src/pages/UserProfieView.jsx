@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import api from '../api';
 
@@ -12,12 +12,15 @@ export default function UserProfileView() {
 
     const getUserData = async () => {
         try {
-            const response = await api.get("/api/user/view/");           
-            const currentUser = response.data.find(user => user.email === localStorage.getItem('email'));            
-            if (currentUser) {
-                setUser(currentUser);
+            const email = localStorage.getItem('email');
+            // The frontend passes the email as a query parameter to the backend
+            const response = await api.get(`/api/user/view/${encodeURIComponent(email)}`);    
+            // The backend returns the user object (not a list) or null if the user is not found
+          
+            if (response.data) {
+                setUser(response.data); 
             } else {
-                console.warn("User not found in API response.");
+                console.warn("User not found.");
                 setUser(null);
             }
         } catch (error) {
@@ -38,6 +41,7 @@ export default function UserProfileView() {
             ) : (
                 <p>No user data...</p>
             )}
+            <Link to="/user-profile/edit" state={{ user }} className="button w-20 margin-center">Edit your profile</Link>
         </div>
     )
 }
