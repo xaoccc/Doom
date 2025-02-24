@@ -21,8 +21,6 @@ body {
 	color: #b90707; 	
 }
 
-
-
 #root {
 	min-height: 100vh;
 	display: flex;
@@ -120,6 +118,22 @@ hr {
 
 .flex {
 	display: flex;
+}
+
+.margin-center {
+	margin: 0 auto;
+}
+
+.w-40 {
+	width: 40%;
+}
+
+.w-30 {
+	width: 30%;
+}
+
+.w-20 {
+	width: 20%;
 }
 
 .row.center-xs {
@@ -314,10 +328,11 @@ hr {
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
 }
 
-.under-construction {
+.under-construction{
 	width: 75%;
 	margin: 0 auto;
 }
+
 
 .icon.event-details-img {
 	width: 40%;
@@ -629,6 +644,10 @@ footer li a{
 	.event-details {
 		width: 90%;
 		margin: 0 auto;
+	}
+
+	.button.w-20.margin-center {
+		width: 100%;
 	}
 
 	.form-container {

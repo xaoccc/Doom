@@ -9,6 +9,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/user/register/', RegisterView.as_view(), name='register'),
     path('api/user/login/', CustomTokenObtainPairView.as_view(), name='login'),
-    path('api/user/view/', UserViewSet.as_view({'get': 'list'}), name='view_user'),
+    path('api/user/view/<str:email>/', UserViewSet.as_view({'get': 'retrieve_by_email'}), name='view_user'),
     path('sendemail/', SendEmailView.as_view(), name='send_email'),
 ]

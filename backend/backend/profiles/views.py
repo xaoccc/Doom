@@ -10,7 +10,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
 import logging
 from backend.settings import EMAIL_HOST_USER
-from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404
 
 def send_register_email(user_email):
     try:
@@ -55,6 +55,12 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = AppUser.objects.all()
     serializer_class = UserSerializer
+
+    # Retrieves the user by email from the URL and returns the user object to the frontend
+    def retrieve_by_email(self, request, email=None):
+        user = get_object_or_404(AppUser, email=email)
+        serializer = self.get_serializer(user)
+        return Response(serializer.data)
     
 
 class RegisterView(APIView):
