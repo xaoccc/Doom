@@ -2,6 +2,7 @@ from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.decorators import action
 from .models import AppUser
 from .serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -57,10 +58,24 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     # Retrieves the user by email from the URL and returns the user object to the frontend
+    @action(detail=False, methods=['get'], url_path='view/(?P<email>[^/.]+)')
     def retrieve_by_email(self, request, email=None):
         user = get_object_or_404(AppUser, email=email)
         serializer = self.get_serializer(user)
         return Response(serializer.data)
+    
+    @action(detail=False, methods=['put'], url_path='edit/(?P<id>\d+)/')
+    def update_by_email(self, request, id=None):
+        user = get_object_or_404(AppUser, id=id)
+        serializer = self.get_serializer(user, data=request.data, partial=True)
+       
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
     
 
 class RegisterView(APIView):
