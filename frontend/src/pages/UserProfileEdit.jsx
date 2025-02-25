@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 
@@ -9,6 +9,7 @@ export default function UserProfileEdit() {
     const location = useLocation();
     const [user, setUser] = useState(location.state?.user || {});
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     console.log(user);
 
@@ -39,15 +40,20 @@ export default function UserProfileEdit() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        if (age < 18 || age > 120) {
+        if (user.age < 18 || user.age > 120) {
             setLoading(false);
             return;
         }
 
+        // We pass the user object to the backend
+        // The backend returns the updated user object and we update the state and update the local storage with the new email
+        // So that the UserProfileView component can load and display the updated user data (because we use the email to fetch the user data)
+        // Note that the url has a trailing slash - this is because the backend expects it!!!
         try {
-            const res = await api.put(`/api/user/edit/${encodeURIComponent(user.email)}`, { age });
-            console.log(res);
+            const res = await api.put(`/api/user/edit/${user.id}/`, user );
             setUser(res.data);
+            localStorage.setItem('email', user.email);
+            navigate('/user-profile', { state: { user: res.data } });
         } catch (error) {
             console.error(`Error editing user data: ${error}`);
         } finally {
