@@ -9,8 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     # def get_profile_picture(self, obj):
     #     request = self.context.get("request") 
     #     if obj.profile_picture:
-    #         if settings.DEBUG:
-    #             return 'http://localhost:8000/' + obj.profile_picture.url[18:]
+    #         return request.build_absolute_uri(obj.profile_picture.url) 
     #     return None
     
     class Meta:

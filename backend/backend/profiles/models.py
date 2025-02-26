@@ -31,7 +31,7 @@ class CustomUserManager(BaseUserManager):
 class AppUser(AbstractBaseUser, PermissionsMixin):
     age = models.PositiveIntegerField(null=True, blank=True, validators=[MinValueValidator(18)])
     email = models.EmailField(unique=True)
-    profile_picture = models.ImageField(upload_to='profile_pictures/', null=True, blank=True)
+    profile_picture = models.ImageField(upload_to='', null=True, blank=True)
     first_name = models.CharField(max_length=30, blank=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
