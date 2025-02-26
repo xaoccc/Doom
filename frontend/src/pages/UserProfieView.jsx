@@ -37,6 +37,15 @@ export default function UserProfileView() {
                 <>
                     <h4>Email address: {user.email}</h4>
                     {user.age && <h4>Age: {user.age}</h4>}
+                    {user.profile_picture ? (
+                        <div className="profile-picture-container">
+                            <h4>Profile picture:</h4>
+                            <img src={user.profile_picture} alt="Profile" className="profile-pic-big" />
+                        </div>
+
+                    ) : (
+                        <p>No profile picture uploaded</p>
+                    )}
                 </>
             ) : (
                 <p>No user data...</p>

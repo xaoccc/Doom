@@ -482,6 +482,18 @@ small.error {
 	color: red;
 }
 
+.profile-pic-big {
+	max-width: 16rem;
+}
+
+.profile-picture-container {
+	display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 /* Footer */
 
 footer {
@@ -655,6 +667,7 @@ footer li a{
 		z-index: -1;
 		width: 80%;
 	}
+
 
 	footer .col-md-6 {
 		width: 100%;
