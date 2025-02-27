@@ -184,8 +184,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/profile_pictures/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_pictures')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -219,6 +218,12 @@ if not DEBUG:
     AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
     AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
     AZURE_CONTAINER = os.getenv('AZURE_CONTAINER')
-    AZURE_SSL = True  
+    AZURE_SSL = True
+    AZURE_CUSTOM_DOMAIN = f"https://{AZURE_ACCOUNT_NAME}.blob.core.windows.net/{AZURE_CONTAINER}"
+    MEDIA_URL = f"{AZURE_CUSTOM_DOMAIN}/"   
+
+else:
+    MEDIA_URL = '/profile_pictures/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'profile_pictures')
 
 
