@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'backend.escaperooms',
     'rest_framework',
     'corsheaders',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -213,7 +214,7 @@ EMAIL_USE_TLS = True
 
 
 if not DEBUG:
-    DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE')
+    DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
     AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
     AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
