@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import action
+from rest_framework.parsers import MultiPartParser, FormParser
 from .models import AppUser
 from .serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -56,6 +57,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = AppUser.objects.all()
     serializer_class = UserSerializer
+    parser_classes = [MultiPartParser, FormParser]
 
     # Retrieves the user by email from the URL and returns the user object to the frontend
     @action(detail=False, methods=['get'], url_path='view/(?P<email>[^/.]+)')
