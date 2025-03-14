@@ -20,6 +20,7 @@ import EscapeRoomDetails from './pages/EscapeRoomDetails'
 import UnderConstruction from './pages/UnderConstruction'
 import UserProfileView from './pages/UserProfieView'
 import UserProfileEdit from './pages/UserProfileEdit'
+import BetZone from './pages/BetZone'
 
 
 import Header from './components/Header'
@@ -84,7 +85,7 @@ function App() {
           <Route path="/computer-club" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
           <Route path="/strip-club" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
           <Route path="/marketplace" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
-          <Route path="/bet-zone" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
+          <Route path="/bet-zone" element={<ProtectedRoute><BetZone /></ProtectedRoute>} />
           <Route path="/user-profile" element={<ProtectedRoute><UserProfileView /></ProtectedRoute>} />
           <Route path="/user-profile/edit" element={<ProtectedRoute><UserProfileEdit /></ProtectedRoute>} />
 

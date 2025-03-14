@@ -43,7 +43,7 @@ export default function EscapeRooms() {
                 <div className="row">
                     <h2 className="section-title">Escape Rooms</h2>
                 </div>
-                <div className="rooms-container">
+                <div className="center-xs rooms-container">
                     {displayedRooms.map((escapeRoom, index) => <EscapeRoom key={index} escapeRoom={escapeRoom} />) }
                 </div>
                 {
