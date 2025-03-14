@@ -598,8 +598,8 @@ footer li a{
 		width: 90%;
 	}
 
-	.service, .event {
-		width: 100%;
+	.service, .event, .bet-zone-item, .escape-room {
+		width: 90%;
 		margin: 0 auto;
 	}
 
