@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'backend.services',
     'backend.events',
     'backend.escaperooms',
+    'backend.girls',
     'rest_framework',
     'corsheaders',
     'storages',
