@@ -27,7 +27,7 @@ export default function Services() {
                 <div className="row">
                     <h2 className="section-title">Services</h2>
                 </div>
-                <div className="services-container">
+                <div className="center-xs services-container">
                     {services.map((service, index) => <Service key={index} service={service} />) }
                 </div>
                 {

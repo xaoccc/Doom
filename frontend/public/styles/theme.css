@@ -116,6 +116,10 @@ hr {
 	text-transform: uppercase;
 }
 
+.bold {
+	font-weight: bold;
+}
+
 .flex {
 	display: flex;
 }
@@ -275,26 +279,26 @@ hr {
 }
 
 /* Items */
-.services .icon-row, .events .icon-row, .escape-rooms .icon-row {
+.services .icon-row, .events .icon-row, .escape-rooms .icon-row, .girls .icon-row {
 	padding: 30px 0;
 }
 
-.escape-room {
+.escape-room, .bet-zone-item, .girl {
 	margin-bottom: 3rem;
 }
 
-.service, .event, .escape-room {
+.service, .event, .escape-room, .bet-zone-item, .girl {
 	width: 30%;
 	height: 100%;
 }
 
-.services-container, .events-container, .rooms-container {
+.services-container, .events-container, .rooms-container, .bet-zone-container, .girls-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
-.escape-room p {
+.escape-room p, .bet-zone-item p, .girl p {
 	display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
@@ -304,6 +308,10 @@ hr {
     line-height: 1.5em;
     text-align: justify;
 	cursor: pointer;
+}
+
+.girl .icon.icon.service-img {
+	height: unset;
 }
 
 
@@ -594,8 +602,8 @@ footer li a{
 		width: 90%;
 	}
 
-	.service, .event {
-		width: 100%;
+	.service, .event, .bet-zone-item, .escape-room {
+		width: 90%;
 		margin: 0 auto;
 	}
 
