@@ -2,7 +2,7 @@ import { useNavigate, Link } from "react-router-dom"
 
 import api from "../api"
 
-export default function Girl({ girl }) {
+export default function Girl({ girl, onDeleteGirl }) {
     const navigate = useNavigate();
     const onDelete = async (id) => {
 
@@ -10,7 +10,9 @@ export default function Girl({ girl }) {
             .then(response => {
                 if (response.status === 204) {
                     console.log("Girl deleted successfully!");
-                    navigate('/girls/', { replace: true });
+                    console.log(id);
+                    onDeleteGirl(id);
+                    // navigate('/girls/', { replace: true });
                 } else {
                     console.log("Girl was not deleted!");
                 }

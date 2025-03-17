@@ -1,7 +1,7 @@
 import api from '../api';
 import { useNavigate } from "react-router-dom";
 
-export default function Service({ service }) {
+export default function Service({ service, onDeleteService }) {
 
     const navigate = useNavigate();
 
@@ -10,8 +10,7 @@ export default function Service({ service }) {
           .then((res) => {
             if (res.status === 204) {
               console.log("Service deleted successfully!");
-            //   This app should have been SPA, but in some cases it's easier to reload pages
-            navigate('/services/', { replace: true });
+              onDeleteService(id);
             } else {
               console.log("Service was not deleted!");
             }

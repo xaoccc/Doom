@@ -13,7 +13,7 @@ export default function Girls() {
 
     useEffect(() => {
         getGirls();
-    }, [Girls]);
+    }, []);
 
     const getGirls = async () => {
         api.get("/api/girls/")
@@ -35,6 +35,10 @@ export default function Girls() {
         setDisplayedGirls(Girls.slice(startIndex, endIndex));
     }, [Girls, searchParams]);
 
+    const handleDelete = (id) => {
+        setGirls(prevGirls => prevGirls.filter(girl => girl.id !== id));
+    }
+
 
     return (
         <section className="girls" id="girls">
@@ -43,7 +47,7 @@ export default function Girls() {
                     <h2 className="section-title">Girls</h2>
                 </div>
                 <div className="center-xs girls-container">
-                    {displayedGirls.map((girl, index) => <Girl key={index} girl={girl} />)}
+                    {displayedGirls.map((girl, index) => <Girl key={index} girl={girl} onDeleteGirl={handleDelete} />)}
                 </div>
                 {
                     localStorage.getItem('admin') === 'true' && (
@@ -54,7 +58,7 @@ export default function Girls() {
                 }
             </div>
             <div className="pagination-wrapper">
-                {pages.map((page, index) => <Link key={index} to={`/girls?page=${page}`}>{page}</Link>)}
+                {pages.map((page, index) => <Link key={index} to={`/strip-club?page=${page}`}>{page}</Link>)}
             </div>
         </section>
 
