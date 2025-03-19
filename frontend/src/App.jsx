@@ -19,6 +19,8 @@ import EditEscapeRoom from './pages/EditEscapeRoom'
 import EscapeRoomDetails from './pages/EscapeRoomDetails'
 
 import Girls from './pages/Girls';
+import CreateGirl from './pages/CreateGirl';
+import EditGirl from './pages/EditGirl';
 
 import UnderConstruction from './pages/UnderConstruction'
 import UserProfileView from './pages/UserProfieView'
@@ -79,6 +81,8 @@ function App() {
           <Route path="/escape-rooms/:escapeRoomId" element={<ProtectedRoute><EscapeRoomDetails /></ProtectedRoute>} />
           <Route path="/computer-club" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
           <Route path="/strip-club" element={<ProtectedRoute><Girls /></ProtectedRoute>} />
+          <Route path="/girls/create" element={<ProtectedRoute><CreateGirl /></ProtectedRoute>} />
+          <Route path="/girls/edit/:girlId" element={<ProtectedRoute><EditGirl /></ProtectedRoute>} />
           <Route path="/marketplace" element={<ProtectedRoute><UnderConstruction /></ProtectedRoute>} />
           <Route path="/bet-zone" element={<ProtectedRoute><BetZone /></ProtectedRoute>} />
           <Route path="/user-profile" element={<ProtectedRoute><UserProfileView /></ProtectedRoute>} />
