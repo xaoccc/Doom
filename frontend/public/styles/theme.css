@@ -400,7 +400,7 @@ hr {
 }
 
 /* forms */
-input, textarea {
+input, textarea, select {
 	background-color: #eee;
 	width: 100%;
 	padding: 1rem;

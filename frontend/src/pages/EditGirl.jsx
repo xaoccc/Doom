@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useState, useEffect } from 'react';
+import { validate, changeInput } from '../helpers';
 
 
 export default function EditEscapeRoom() {
@@ -100,20 +101,17 @@ export default function EditEscapeRoom() {
                     type="number"
                     className="form-input"
                     id="age"
-                    name="age"
-                    required
-                    onChange={(e) => setAge(e.target.value)}
+                    name="age"                    
+                    onChange={(e) => {
+                        changeInput(e);
+                        setAge(e.target.value);
+                    }}
+                    onInvalid={(e) => validate(e, 'Please enter a valid age. Age must be between 18 and 70')}
                     value={age}
                     min="18"
                     max="70"
+                    required
                 />
-                {/* if (age < 18) {
-                    <small className="error">The minimum age is 18</small>
-                } else if (age > 70) {
-                    <small className="error">The maximum age is 70</small>
-                } else {
-                    null
-                } */}
                 {(age) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="height">Height:</label>
                 <input
@@ -121,24 +119,38 @@ export default function EditEscapeRoom() {
                     className="form-input"
                     id="height"
                     name="height"
-                    required
-                    onChange={(e) => setHeight(e.target.value)}
+                    onChange={(e) => {
+                        changeInput(e);
+                        setHeight(e.target.value);
+                    }}
+                    onInvalid={(e) => validate(e, 'Please enter a valid height. Height must be between 100cm and 200cm')}
                     value={height}
+                    min="100"
+                    max="200"
+                    required
                 />
                 {(height) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="skinColor">Skin Color:</label>
-                <input
+                <select                     
                     type="text"
                     className="form-input"
                     id="skinColor"
                     name="skinColor"
                     required
-                    onChange={(e) => setSkinColor(e.target.value)}
+                    onChange={(e) => {
+                        changeInput(e);
+                        setSkinColor(e.target.value);
+                    }}
                     value={skinColor}
-                />
+                    >
+                    <option value="">--Please choose an option--</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="yellow">Yellow</option>
+                </select>
                 {(skinColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="hairColor">Hair Color:</label>
-                <input
+                <select
                     type="text"
                     className="form-input"
                     id="hairColor"
@@ -146,7 +158,17 @@ export default function EditEscapeRoom() {
                     required
                     onChange={(e) => setHairColor(e.target.value)}
                     value={hairColor}
-                />
+                >
+                    <option value="">--Please choose an option--</option>
+                    <option value="blonde">Blonde</option>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="pink">Pink</option>
+                    <option value="white">White</option>
+                    <option value="bald">Bald</option>
+                </select>
                 {(hairColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="eyeColor">Eye Color:</label>
                 <input

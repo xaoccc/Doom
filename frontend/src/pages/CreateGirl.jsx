@@ -1,33 +1,34 @@
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useState } from 'react';
+import { validate, changeInput } from '../helpers';
 
 export default function CreateGirl() {
     const [image, setImage] = useState("");
     const [name, setName] = useState("");
-    const [bio, setBio] = useState("");    
+    const [bio, setBio] = useState("");
     const [age, setAge] = useState("");
     const [height, setHeight] = useState("");
     const [skinColor, setSkinColor] = useState("");
     const [hairColor, setHairColor] = useState("");
-    const [eyeColor, setEyeColor] = useState("");    
+    const [eyeColor, setEyeColor] = useState("");
     const navigate = useNavigate();
-  
+
     const createEvent = async (e) => {
-      e.preventDefault();    
-      api.post("/api/girls/create/", { image, name, bio, age, skin_color: skinColor, hair_color: hairColor, eye_color: eyeColor, height })
-        .then((res) => {
-          if (res.status === 201) {
-            console.log("Girl addes successfully!");
-            navigate('/strip-club/');
-  
-          } else {
-            console.log("Girl was not added!");
-          }
-  
-        })
-        .catch((error) => console.error(`Error: ${error}`));
-  
+        e.preventDefault();
+        api.post("/api/girls/create/", { image, name, bio, age, skin_color: skinColor, hair_color: hairColor, eye_color: eyeColor, height })
+            .then((res) => {
+                if (res.status === 201) {
+                    console.log("Girl addes successfully!");
+                    navigate('/strip-club/');
+
+                } else {
+                    console.log("Girl was not added!");
+                }
+
+            })
+            .catch((error) => console.error(`Error: ${error}`));
+
     }
 
     return (
@@ -73,18 +74,16 @@ export default function CreateGirl() {
                     id="age"
                     name="age"
                     required
-                    onChange={(e) => setAge(e.target.value)}
+                    onChange={(e) => {
+                        changeInput(e);
+                        setAge(e.target.value);
+                    }}
+                    onInvalid={(e) => validate(e, 'Please enter a valid age. Age must be between 18 and 70')}
                     value={age}
                     min="18"
                     max="70"
                 />
-                {/* if (age < 18) {
-                    <small className="error">The minimum age is 18</small>
-                } else if (age > 70) {
-                    <small className="error">The maximum age is 70</small>
-                } else {
-                    null
-                } */}
+
                 {(age) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="height">Height:</label>
                 <input
@@ -93,12 +92,18 @@ export default function CreateGirl() {
                     id="height"
                     name="height"
                     required
-                    onChange={(e) => setHeight(e.target.value)}
+                    onChange={(e) => {
+                        changeInput(e);
+                        setHeight(e.target.value);
+                    }}
+                    onInvalid={(e) => validate(e, 'Please enter a valid height. Height must be between 100cm and 200cm')}
                     value={height}
+                    min="100"
+                    max="200"
                 />
                 {(height) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="skinColor">Skin Color:</label>
-                <input
+                <select
                     type="text"
                     className="form-input"
                     id="skinColor"
@@ -106,10 +111,15 @@ export default function CreateGirl() {
                     required
                     onChange={(e) => setSkinColor(e.target.value)}
                     value={skinColor}
-                />
+                >
+                    <option value="">--Please choose an option--</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="yellow">Yellow</option>
+                </select>
                 {(skinColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="hairColor">Hair Color:</label>
-                <input
+                <select
                     type="text"
                     className="form-input"
                     id="hairColor"
@@ -117,7 +127,18 @@ export default function CreateGirl() {
                     required
                     onChange={(e) => setHairColor(e.target.value)}
                     value={hairColor}
-                />
+                >
+                    <option value="">--Please choose an option--</option>
+                    <option value="blonde">Blonde</option>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="pink">Pink</option>
+                    <option value="white">White</option>
+                    <option value="bald">Bald</option>
+                </select>
+
                 {(hairColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="eyeColor">Eye Color:</label>
                 <input
