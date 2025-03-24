@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useState, useEffect } from 'react';
 import { validate, changeInput } from '../helpers';
@@ -7,7 +7,6 @@ import { validate, changeInput } from '../helpers';
 export default function EditEscapeRoom() {
     const { girlId } = useParams();
     const [girls, setGirls] = useState([]);
-
     const [image, setImage] = useState("");
     const [name, setName] = useState("");
     const [bio, setBio] = useState("");    
@@ -59,7 +58,6 @@ export default function EditEscapeRoom() {
             })
             .catch((error) => console.error(`Error: ${error}`));
     }
-
     return (
         <div>
             <h2 className="crud-title">Edit Girl</h2>
@@ -171,7 +169,7 @@ export default function EditEscapeRoom() {
                 </select>
                 {(hairColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="eyeColor">Eye Color:</label>
-                <input
+                <select
                     type="text"
                     className="form-input"
                     id="eyeColor"
@@ -179,10 +177,18 @@ export default function EditEscapeRoom() {
                     required
                     onChange={(e) => setEyeColor(e.target.value)}
                     value={eyeColor}
-                />
+                >
+                    <option value="">--Please choose an option--</option>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                    <option value="gray">Gray</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
                 {(eyeColor) ? null : <small className="error">This field is required</small>}
 
                 <input type="submit" value="Submit" />
+                <Link className="button" to="/strip-club">Back</Link>
             </form>
         </div>
     )
