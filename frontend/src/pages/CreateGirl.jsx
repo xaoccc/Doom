@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import api from '../api';
 import { useState } from 'react';
 import { validate, changeInput } from '../helpers';
@@ -25,10 +25,8 @@ export default function CreateGirl() {
                 } else {
                     console.log("Girl was not added!");
                 }
-
             })
             .catch((error) => console.error(`Error: ${error}`));
-
     }
 
     return (
@@ -83,7 +81,6 @@ export default function CreateGirl() {
                     min="18"
                     max="70"
                 />
-
                 {(age) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="height">Height:</label>
                 <input
@@ -138,10 +135,9 @@ export default function CreateGirl() {
                     <option value="white">White</option>
                     <option value="bald">Bald</option>
                 </select>
-
                 {(hairColor) ? null : <small className="error">This field is required</small>}
                 <label htmlFor="eyeColor">Eye Color:</label>
-                <input
+                <select
                     type="text"
                     className="form-input"
                     id="eyeColor"
@@ -149,10 +145,18 @@ export default function CreateGirl() {
                     required
                     onChange={(e) => setEyeColor(e.target.value)}
                     value={eyeColor}
-                />
+                >
+                    <option value="">--Please choose an option--</option>
+                    <option value="black">Black</option>
+                    <option value="brown">Brown</option>
+                    <option value="gray">Gray</option>
+                    <option value="blue">Blue</option>
+                    <option value="green">Green</option>
+                </select>
                 {(eyeColor) ? null : <small className="error">This field is required</small>}
 
                 <input type="submit" value="Submit" />
+                <Link className="button service" to="/strip-club">Back</Link>
             </form>
         </div>
     )
