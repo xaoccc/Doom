@@ -342,9 +342,16 @@ hr {
 }
 
 
-.icon.event-details-img {
+.icon.event-details-img{
 	width: 40%;
 	height: 16rem;
+	border-radius: 10px;
+	margin-top: 1rem;
+	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
+}
+
+.icon.girl-details-img {
+	width: 50%;
 	border-radius: 10px;
 	margin-top: 1rem;
 	filter: drop-shadow(0px 0px 9px rgb(128, 20, 20));
@@ -355,7 +362,7 @@ hr {
 	cursor: pointer;
 }
 
-.icon.event-details-img:hover {
+.icon.event-details-img:hover, .icon.girl-details-img:hover {
 	filter: saturate(2) drop-shadow(0px 0px 9px red);
 }
 
@@ -459,7 +466,7 @@ button, .button, .service > a.button {
 	font-size: 0.8rem;	
 }
 
-.event-details {
+.event-details, .girl-details {
 	flex-direction: column;
 	align-items: center;
 }
@@ -657,11 +664,11 @@ footer li a{
 		display: none;
 	}
 
-	.icon.event-details-img {
+	.icon.event-details-img, .icon.girl-details-img {
 		width: 100%;
 	}
 
-	.event-details {
+	.event-details , .girl-details{
 		width: 90%;
 		margin: 0 auto;
 	}
