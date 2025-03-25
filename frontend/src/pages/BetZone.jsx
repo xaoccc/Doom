@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 export default function BetZone() {
     return (
         <section className="bet-zone" id="bet-zone">
@@ -40,6 +42,7 @@ export default function BetZone() {
                         <p>The reels are spinning… Will you hit the jackpot?</p>
                     </div>
                 </div>
+                <Link to={`/services/`} className="service button margin-center">Back</Link>
             </div>
         </section>
     )

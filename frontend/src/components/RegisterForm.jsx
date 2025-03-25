@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN, ADMIN } from "../constants";
 import LoadingIndicator from "./LoadingIndicator";
+import { validate, changeInput } from "../helpers";
 
 
 export default function RegisterForm({ route, method }) {
@@ -13,30 +14,6 @@ export default function RegisterForm({ route, method }) {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const name = (method === 'login') ? 'Enter the realms of Club Doom' : 'Register';
-
-    function changeInput(e) {
-        e.target.setCustomValidity('');
-        const nextElement = e.target.nextElementSibling;
-        if (nextElement && nextElement.classList.contains('error-message')) {
-            nextElement.remove();
-        }
-    }
-
-    function createErrorMesage(target, message) {
-        const errorMessage = document.createElement('p');
-        errorMessage.classList.add('error-message');
-        errorMessage.textContent = message;
-        target.insertAdjacentElement('afterend', errorMessage);
-    }
-
-    function validate(e, message) {
-        const nextElement = e.target.nextElementSibling;
-        if (nextElement && nextElement.classList.contains('error-message')) {
-            nextElement.remove();
-        }
-        e.target.setCustomValidity(' ');
-        createErrorMesage(e.target, message);
-    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
